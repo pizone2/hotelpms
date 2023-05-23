@@ -83,13 +83,27 @@
                         <div class="col-lg-6">
                             <form:label path="email" cssClass="contacklabel">EMAIL</form:label>
                             <input name="email" id="email" type="email"></input>
+                            <form:errors path="email"></form:errors>
                         </div>
+
+                        <div class="col-lg-6">
+                            <label for="emailCheck" class="contacklabel">emailCheck</label>
+                            <input id="emailCheck" name="emailCheck" type="text" />
+                            <span id="emailCheckValidation"></span>
+                            <form:errors path="emailCheck"></form:errors>
+                        </div>
+
+                        <div class="col-lg-6">
+                        <button type="button" id="sendMail" style="margin-top: 60px;">인증번호</button>
+                        </div>
+
                         <div class="col-lg-12">
                             <form:label path="phoneNumber" cssClass="contacklabel">PHONE NUMBER</form:label>
                             <form:input path="phoneNumber" id="phoneNumber"></form:input>
+                            <form:errors path="phoneNumber"></form:errors>
                         </div>
                         <div class="col-lg-12">
-                            <button type="submit">Submit Now</button>
+                            <button type="submit" id="submitButton">Submit Now</button>
                         </div>
                     </div>
                 </form:form>
@@ -126,6 +140,46 @@
 
 <!-- Js Plugins -->
 <c:import url="../temp/js.jsp"></c:import>
+<script type="text/javascript">
+    const emailCheckInput = document.querySelector('#emailCheck');
+    emailCheckInput.addEventListener('input', validateEmailCheck);
+    let key = "";
+    $("#sendMail").click(function() {// 메일 입력 유효성 검사
+
+        $.ajax({
+            type : "Post",
+            url : "./checkMail",
+            data : {
+                email:$('#email').val()
+            },
+            success:function(result){
+                console.log(result)
+                alert("인증번호가 발송되었습니다.");
+                key = result;
+            },
+            error:function(){
+                console.log()
+                alert("인증번호 발송이 실패하였습니다.")
+            }
+        })
+    });
+
+    function validateEmailCheck() {
+        const emailCheck = this.value;
+
+        if (emailCheck === key) {
+            // 이메일 인증 성공
+            document.querySelector('#emailCheckValidation').textContent = '인증 성공';
+            $("#submitButton").prop("disabled", false);
+        } else {
+            // 이메일 인증 실패
+            document.querySelector('#emailCheckValidation').textContent = '인증 실패';
+            $("#submitButton").prop("disabled", true);
+        }
+    }
+
+
+</script>
 </body>
 
 </html>

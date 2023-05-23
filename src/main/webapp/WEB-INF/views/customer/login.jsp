@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -38,12 +39,11 @@
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                 <div class="booking-form">
-                    <h3>Booking Your Hotel</h3>
-                    <form action="#">
+                    <h3>LOGIN</h3>
+                    <form:form action="./login">
                         <div class="check-date">
-                            <label for="date-in">Check In:</label>
+                            <label>ID</label>
                             <input type="text" class="date-input hasDatepicker" id="date-in">
-                            <i class="icon_calendar"></i>
                         </div>
                         <div class="check-date">
                             <label for="date-out">Check Out:</label>
@@ -65,7 +65,7 @@
                             </select><div class="nice-select" tabindex="0"><span class="current">1 Room</span><ul class="list"><li data-value="" class="option selected">1 Room</li><li data-value="" class="option">2 Room</li></ul></div>
                         </div>
                         <button type="submit">Check Availability</button>
-                    </form>
+                    </form:form>
                 </div>
             </div>
         </div>
