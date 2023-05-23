@@ -1,17 +1,17 @@
 package com.dev.hotelpms.customer;
 
+import com.dev.hotelpms.util.MailManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/customer/*")
@@ -20,6 +20,10 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private MailManager mailManager;
+
     @GetMapping("join")
     public ModelAndView setJoin(@ModelAttribute CustomerVO customerVO) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -53,6 +57,18 @@ public class CustomerController {
             mv.setViewName("redirect:/");
         }
         return mv;
+    }
+
+    @PostMapping("/checkMail") // AJAX와 URL을 매핑시켜줌
+    @ResponseBody  //AJAX후 값을 리턴하기위해 작성
+    public String SendMail(String email) throws MessagingException {
+        UUID uuid = UUID.randomUUID(); // 랜덤한 UUID 생성
+        String key = uuid.toString().substring(0, 7); // UUID 문자열 중 7자리만 사용하여 인증번호 생성
+        String sub ="인증번호 입력을 위한 메일 전송";
+        String con = "인증 번호 : "+key;
+        log.error("======{}======",email);
+        mailManager.send(email,sub,con);
+        return key;
     }
 
     @GetMapping("myPage")

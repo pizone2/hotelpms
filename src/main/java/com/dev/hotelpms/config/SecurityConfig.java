@@ -59,7 +59,7 @@ public class SecurityConfig {
 				.and()
 			.formLogin() //로그인 폼 인증 설정
 				.loginPage("/customer/login") //내장된 로그인폼을 사용하지 않고 개발자가 만든 폼요청 URL
-//				.usernameParameter("userName") //id 파라미터는 username이지만, 개발자가 다른 파라미터 이름을 사용할 때
+				.usernameParameter("id") //id 파라미터는 username이지만, 개발자가 다른 파라미터 이름을 사용할 때
 //				.defaultSuccessUrl("/") //인증에 성공할 경우 요청할 URL
 				.successHandler(new UserSuccessHandler()) //UserSuccessHandler 객체 생성 (로그인 성공시)
 //				.failureUrl("/member/login") //인증에 실패했을 경우 요청할 URL

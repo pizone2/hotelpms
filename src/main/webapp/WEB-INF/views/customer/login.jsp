@@ -14,6 +14,14 @@
     <!--css-->
     <c:import url="../temp/style.jsp"></c:import>
     <!--css-->
+    <style>
+        .custom1-control {
+            position: relative;
+            display: block;
+            min-height: 1.5rem;
+            padding-top: 1.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,33 +46,22 @@
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                 <div class="booking-form">
-                    <h3>Booking Your Hotel</h3>
-                    <form action="#">
+                    <h3>LOGIN</h3>
+                    <form action="./login" method="post">
                         <div class="check-date">
-                            <label for="date-in">Check In:</label>
-                            <input type="text" class="date-input hasDatepicker" id="date-in">
-                            <i class="icon_calendar"></i>
+                            <label for="id">ID</label>
+                            <input type="text" class="date-input hasDatepicker" id="id" value="${cookie.remember.value}" name="id"/>
                         </div>
                         <div class="check-date">
-                            <label for="date-out">Check Out:</label>
-                            <input type="text" class="date-input hasDatepicker" id="date-out">
-                            <i class="icon_calendar"></i>
+                            <label for="password">PASSWORD</label>
+                            <input type="password" class="date-input hasDatepicker" id="password" name="password">
                         </div>
-                        <div class="select-option">
-                            <label for="guest">Guests:</label>
-                            <select id="guest" style="display: none;">
-                                <option value="">2 Adults</option>
-                                <option value="">3 Adults</option>
-                            </select><div class="nice-select" tabindex="0"><span class="current">2 Adults</span><ul class="list"><li data-value="" class="option selected">2 Adults</li><li data-value="" class="option">3 Adults</li></ul></div>
+                        <a href="/customer/join" style="color: #888888; font-size: small; text-decoration: underline;">회원가입을 하시겠습니까?</a>
+                        <div class="custom1-control custom-checkbox small">
+                            <input id="remember" name="remember" value="remember" type="checkbox" data-sb-validations="required,email" />
+                            <label for="remember">ID 기억하기</label>
                         </div>
-                        <div class="select-option">
-                            <label for="room">Room:</label>
-                            <select id="room" style="display: none;">
-                                <option value="">1 Room</option>
-                                <option value="">2 Room</option>
-                            </select><div class="nice-select" tabindex="0"><span class="current">1 Room</span><ul class="list"><li data-value="" class="option selected">1 Room</li><li data-value="" class="option">2 Room</li></ul></div>
-                        </div>
-                        <button type="submit">Check Availability</button>
+                        <button  id="submitButton" type="submit">확인</button>
                     </form>
                 </div>
             </div>
