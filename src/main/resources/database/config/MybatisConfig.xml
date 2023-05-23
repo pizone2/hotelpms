@@ -3,9 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
-		<typeAlias type="com.dev.hotelpms.customer.CustomerVO" alias="CustomerVO"/>
-
-		<typeAlias type="com.dev.hotelpms.pay.PayVO" alias="PayVO"/>
-	</typeAliases>
+		<typeAliases>
+		    <typeAlias type="com.dev.hotelpms.customer.CustomerVO" alias="CustomerVO"/>
+		    <typeAlias type="com.dev.hotelpms.pay.PayVO" alias="PayVO"/>
+        <typeAlias type="com.dev.hotelpms.booking.BookingVO" alias="BookingVO" />
+        <typeAlias type="com.dev.hotelpms.room.RoomVO" alias="RoomVO" />
+        <typeAlias type="com.dev.hotelpms.room.RoomTypeVO" alias="RoomTypeVO" />
+		</typeAliases>
 </configuration>

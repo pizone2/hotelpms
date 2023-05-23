@@ -64,4 +64,8 @@ public class CustomerService implements UserDetailsService {
         int result = customerDAO.setJoin(customerVO);
         return result;
     }
+
+    public CustomerVO getCustomer(CustomerVO customerVO) throws Exception {
+        return customerDAO.getCustomer(customerVO);
+    }
 }
