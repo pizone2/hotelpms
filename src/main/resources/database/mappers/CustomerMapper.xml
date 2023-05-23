@@ -16,9 +16,5 @@
 	<select id="idDuplicateCheck" resultType="CustomerVO" parameterType="CustomerVO">
 		SELECT ID FROM CUSTOMER WHERE ID=#{id}
 	</select>
-	<select id="getCustomer" parameterType="CustomerVO" resultType="CustomerVO">
-		SELECT *
-		FROM CUSTOMER
-		WHERE ID=#{id}
-	</select>
+
 </mapper>
