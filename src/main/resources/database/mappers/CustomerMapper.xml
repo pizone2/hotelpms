@@ -13,8 +13,12 @@
 		WHERE id=#{id}
 		<!-- 패스워드를 여기서 비교하지 않는다(AND M.PASSWORD=#{paaword} 삭제함) -->
 	</select>
-
 	<select id="idDuplicateCheck" resultType="CustomerVO" parameterType="CustomerVO">
 		SELECT ID FROM CUSTOMER WHERE ID=#{id}
+	</select>
+	<select id="getCustomer" parameterType="CustomerVO" resultType="CustomerVO">
+		SELECT *
+		FROM CUSTOMER
+		WHERE ID=#{id}
 	</select>
 </mapper>

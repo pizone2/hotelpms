@@ -72,7 +72,11 @@ public class CustomerController {
     }
 
     @GetMapping("myPage")
-    public void getMyPage() throws Exception{
-
+    public ModelAndView getCustomer(CustomerVO customerVO) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        customerVO = customerService.getCustomer(customerVO);
+        mv.addObject("customerVO",customerVO);
+        mv.setViewName("customer/myPage");
+        return mv;
     }
 }

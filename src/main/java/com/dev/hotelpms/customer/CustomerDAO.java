@@ -12,4 +12,6 @@ public interface CustomerDAO {
 
     //id중복체크
     public CustomerVO idDuplicateCheck(CustomerVO customerVO) throws Exception;
+
+    public CustomerVO getCustomer(CustomerVO customerVO) throws Exception;
 }
