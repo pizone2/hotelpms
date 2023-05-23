@@ -39,7 +39,7 @@ public class UserLoginFailHandler implements AuthenticationFailureHandler{
 		}
 		
 		errorMessage=URLEncoder.encode(errorMessage, "UTF-8");
-		response.sendRedirect("/member/login?errorMessage="+errorMessage);
+		response.sendRedirect("/customer/login?errorMessage="+errorMessage);
 	}
 	
 }

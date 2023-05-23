@@ -1,4 +1,5 @@
 <!-- Offcanvas Menu Section Begin -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="offcanvas-menu-overlay"></div>
 <div class="canvas-open">
     <i class="icon_menu"></i>
@@ -53,8 +54,15 @@
                                 <li class="active"><a href="/">Home</a></li>
                                 <li><a href="/sample/sample">Rooms</a></li>
                                 <li><a href="#">Reservation</a></li>
+                                <sec:authorize access="isAuthenticated()">
+                                <li><a href="/customer/myPage">MyPage</a></li>
+                                <li><a href="/customer/logout">Logout</a></li>
+                                </sec:authorize>
+                                <sec:authorize access="!isAuthenticated()">
                                 <li><a href="/customer/login">Login</a></li>
+                                </sec:authorize>
                             </ul>
+
                         </nav>
                         <div class="nav-right search-switch">
                             <i class="icon_search"></i>
