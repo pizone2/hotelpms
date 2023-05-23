@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -36,9 +37,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="hero-text">
-                    <h1>Welcome A Luxury Hotel, </h1>
+                    <spring:message code="welcome" var="m" text=""/>
+                    <h1>${m}</h1>
                     <br>
-                    <h1>Please make a reservation</h1>
+                    <spring:message code="reservation" var="r" text=""/>
+                    <h1>${r}</h1>
                     <p>Here are the best hotel booking sites, including recommendations for international
                         travel and for finding low-priced hotel rooms.</p>
                     <a href="#" class="primary-btn">Discover Now</a>

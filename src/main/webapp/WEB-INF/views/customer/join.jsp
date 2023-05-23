@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <label for="emailCheck" class="contacklabel">emailCheck</label>
+                            <label for="emailCheck" class="contacklabel">EmailCheck</label>
                             <input id="emailCheck" name="emailCheck" type="text" />
                             <span id="emailCheckValidation"></span>
                             <form:errors path="emailCheck"></form:errors>
@@ -103,7 +103,7 @@
                             <form:errors path="phoneNumber"></form:errors>
                         </div>
                         <div class="col-lg-12">
-                            <button type="submit" id="submitButton">Submit Now</button>
+                            <button type="submit" id="submitButton">가입하기</button>
                         </div>
                     </div>
                 </form:form>
