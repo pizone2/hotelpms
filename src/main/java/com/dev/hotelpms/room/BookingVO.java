@@ -1,9 +1,11 @@
-package com.dev.hotelpms.booking;
+package com.dev.hotelpms.room;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
+
 
 @Setter
 @Getter
@@ -20,6 +22,9 @@ public class BookingVO {
      private Date checkoutDate;
      private String reservationStatus;
      private Long paymentAmount;
+
+     //객실 예약 정보를 불러오기 위한 리스트 선언
+     private List<RoomVO> roomVOs;
 
 
 
