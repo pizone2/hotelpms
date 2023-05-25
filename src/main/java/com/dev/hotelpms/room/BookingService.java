@@ -1,4 +1,4 @@
-package com.dev.hotelpms.booking;
+package com.dev.hotelpms.room;
 
 
 import lombok.extern.slf4j.Slf4j;

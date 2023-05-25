@@ -1,4 +1,4 @@
-package com.dev.hotelpms.booking;
+package com.dev.hotelpms.room;
 
 import org.apache.ibatis.annotations.Mapper;
 
