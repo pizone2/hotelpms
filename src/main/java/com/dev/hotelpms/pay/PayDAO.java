@@ -7,4 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PayDAO {
 
     public PayVO getPayDetail(PayVO payVO)throws Exception;
+
+    public int setPayAdd(PayVO payVO)throws Exception;
+
 }

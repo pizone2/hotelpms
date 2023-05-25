@@ -3,7 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.hotelpms.pay.PayDAO">
+
    <select id="getPayDetail" parameterType="PayVO" resultType="PayVO">
-       SELECT * FROM BOOKING WHERE ID = 'user1'
+       SELECT * FROM BOOKING WHERE ID = 'pizone' ORDER BY PAYMENTDATE  DESC LIMIT 1;
    </select>
+
+    <insert id="setPayAdd" parameterType="PayVO">
+        INSERT INTO BOOKING VALUES(#{reservationNumber},#{roomNumber},#{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber})
+    </insert>
+
 </mapper>
