@@ -6,7 +6,7 @@
 		<typeAliases>
 		    <typeAlias type="com.dev.hotelpms.customer.CustomerVO" alias="CustomerVO"/>
 		    <typeAlias type="com.dev.hotelpms.pay.PayVO" alias="PayVO"/>
-        <typeAlias type="com.dev.hotelpms.booking.BookingVO" alias="BookingVO" />
+        <typeAlias type="com.dev.hotelpms.room.BookingVO" alias="BookingVO" />
         <typeAlias type="com.dev.hotelpms.room.RoomVO" alias="RoomVO" />
         <typeAlias type="com.dev.hotelpms.room.RoomTypeVO" alias="RoomTypeVO" />
 		</typeAliases>
