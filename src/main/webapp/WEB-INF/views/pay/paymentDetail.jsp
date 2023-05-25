@@ -17,7 +17,11 @@
 </head>
 
 <body>
-    <!-- Header Section Begin -->
+<c:set var="payVO" value="${payVO}" scope="request" />
+
+
+
+<!-- Header Section Begin -->
     <c:import url="../temp/header.jsp"></c:import>
     <!-- Header End -->
     <style>
@@ -27,6 +31,7 @@
     </style>
 
     <h3>객실예약</h3>
+<br>
     <table class="table">
         <tr>
             <th>객실명</th>
@@ -35,20 +40,23 @@
             <th>결제금액</th>
         </tr>
         <tr>
-            <td>happy 102호</td>
-            <td>Jan 1 - Jan 7</td>
-            <td>3명</td>
-            <td>150,000원</td>
+            <td>${payVO.roomNumber}</td>
+            <td>${payVO.checkinDate}~${payVO.checkoutDate}</td>
+            <td>${payVO.guestCount}</td>
+            <td>${payVO.paymentAmount}</td>
         </tr>
 
     </table>
+<br>
+<br>
 
     <h3>결제정보</h3>
+<br>
     <table class="table table-bordered">
         <tr>
             <th>결제금액</th>
-            <td>150,000원</td>
-            <td>계산금액 150,000원 + 부가서비스금액 0원</td>
+            <td>${payVO.paymentAmount}</td>
+            <td>계산금액${payVO.paymentAmount}원 + 부가서비스금액 0원</td>
         </tr>
         <tr>
             <th>결제방법</th>
@@ -57,29 +65,34 @@
         </tr>
         <tr>
             <th>입금자명</th>
-            <td>김진서</td>
+            <td>${payVO.name}</td>
             <td>*2022 05 19 19:13:12 까지 입금확인이 안되면 자동삭제됩니다.</td>
         </tr>
 
     </table>
+<br>
+<br>
 
     <h3>예약자정보</h3>
+<br>
     <table class="table table-bordered">
         <tr>
             <th>예약번호</th>
-            <td>12345_6782 (예약확인,취소시 필요합니다.)</td>
+            <td>${payVO.reservationNumber} (예약확인,취소시 필요합니다.)</td>
         </tr>
         <tr>
             <th>예약자명</th>
-            <td>김진서</td>
+            <td>${payVO.name}</td>
         </tr>
         <tr>
             <th>연락처</th>
-            <td>010-4522-2311</td>
+            <td>${payVO.phoneNumber}</td>
         </tr>
 
 
     </table>
+<br>
+<br>
 
     <!-- Footer Section Begin -->
     <c:import url="../temp/footer.jsp"></c:import>
