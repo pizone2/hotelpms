@@ -1,4 +1,4 @@
-package com.dev.hotelpms.customer;
+package com.dev.hotelpms.user;
 
 import com.dev.hotelpms.util.MailManager;
 import lombok.extern.slf4j.Slf4j;
@@ -16,32 +16,32 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/customer/*")
 @Slf4j
-public class CustomerController {
+public class UserController {
 
     @Autowired
-    private CustomerService customerService;
+    private UserService userService;
 
     @Autowired
     private MailManager mailManager;
 
     @GetMapping("join")
-    public ModelAndView setJoin(@ModelAttribute CustomerVO customerVO) throws Exception{
+    public ModelAndView setJoin(@ModelAttribute UserVO userVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         mv.setViewName("customer/join");
         return mv;
     }
 
     @PostMapping("join")
-    public ModelAndView setJoin(@Valid CustomerVO customerVO, BindingResult bindingResult) throws Exception{
-        log.error("::::{}::::",customerVO.getId());
+    public ModelAndView setJoin(@Valid UserVO userVO, BindingResult bindingResult) throws Exception{
+        log.error("::::{}::::",userVO.getId());
         ModelAndView mv = new ModelAndView();
-        boolean check  = customerService.memberCheck(customerVO, bindingResult);
+        boolean check  = userService.memberCheck(userVO, bindingResult);
         if(check) {
             log.warn("======검증에 실패======");
             mv.setViewName("customer/join");
             return mv;
         }
-        int result = customerService.setJoin(customerVO);
+        int result = userService.setJoin(userVO);
         mv.setViewName("redirect:../");
         return mv;
     }
@@ -72,7 +72,7 @@ public class CustomerController {
     }
 
     @GetMapping("myPage")
-    public ModelAndView getCustomer(CustomerVO customerVO) throws Exception{
+    public ModelAndView getCustomer(UserVO userVO) throws Exception{
         ModelAndView mv = new ModelAndView();
         mv.setViewName("customer/myPage");
         return mv;

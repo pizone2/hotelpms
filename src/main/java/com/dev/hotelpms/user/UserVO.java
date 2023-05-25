@@ -1,21 +1,22 @@
-package com.dev.hotelpms.customer;
+package com.dev.hotelpms.user;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 @Setter
 @Getter
-public class CustomerVO implements UserDetails {
+public class UserVO implements UserDetails, OAuth2User {
     @NotBlank
     private String id;
     @NotBlank
@@ -32,12 +33,16 @@ public class CustomerVO implements UserDetails {
     private String email;
     @NotBlank
     private String emailCheck;
+    private String roleName;
+
+    //OAuth2User, token 정보 저장
+    private Map<String,Object> attributes;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // 사용자의 권한을 반환
         // 여기서는 간단히 "ROLE_USER" 권한을 부여
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_MEMBER"));
     }
 
     @Override

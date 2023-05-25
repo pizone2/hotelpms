@@ -58,7 +58,7 @@
                 <div class="text-center">
                     <h1 class="h1 text-gray-900 mb-4">Create an Account!</h1>
                 </div>
-                <form:form action="./join" cssClass="contact1-form" modelAttribute="customerVO">
+                <form:form action="./join" cssClass="contact1-form" modelAttribute="userVO">
                     <div class="row">
                         <div class="col-lg-12">
                             <form:label path="id" cssClass="contacklabel">ID</form:label>

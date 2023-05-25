@@ -2,7 +2,9 @@ package com.dev.hotelpms.config;
 
 import com.dev.hotelpms.security.UserLoginFailHandler;
 import com.dev.hotelpms.security.UserLogoutHandler;
+import com.dev.hotelpms.security.UserLogoutSucessHandler;
 import com.dev.hotelpms.security.UserSuccessHandler;
+import com.dev.hotelpms.user.UserSocialService;
 import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,12 @@ public class SecurityConfig {
 
 	@Autowired
 	private UserLogoutHandler userLogoutHandler;
+
+	@Autowired
+	private UserSocialService userSocialService;
+
+	@Autowired
+	private UserLogoutSucessHandler logoutSucessHandler;
 	
 	@Bean
 	//public 을 선언하면 default로 바꾸라는 메세지 출력
@@ -69,15 +77,15 @@ public class SecurityConfig {
 			.logout() //로그아웃 폼 인증 설정
 				.logoutUrl("/customer/logout")
 				.logoutSuccessUrl("/")
-				//.logoutSuccessHandler(logoutSucessHandler)//UserLogoutSucessHandler 객체 생성 (로그아웃 성공시)
-				.addLogoutHandler(userLogoutHandler) //UserLogoutHandler 객체 생성(단순 로그아웃)
+				.logoutSuccessHandler(logoutSucessHandler)//UserLogoutSucessHandler 객체 생성 (로그아웃 성공시)
+				//.addLogoutHandler(userLogoutHandler) //UserLogoutHandler 객체 생성(단순 로그아웃)
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID")
-				.permitAll();
-//				.and()
-//			.oauth2Login()
-//				.userInfoEndpoint()
-//				.userService(memberSocialService);
+				.permitAll()
+				.and()
+			.oauth2Login()
+				.userInfoEndpoint()
+				.userService(userSocialService);
 //			.sessionManagement()
 //				.maximumSessions(1) //최대 허용 가능한 세션 수 => -1: 무제한, 1:한명만 접속
 //				.maxSessionsPreventsLogin(false); //false: 이전 사용자 세션 만료, true: 새로운 사용자 인증 실패

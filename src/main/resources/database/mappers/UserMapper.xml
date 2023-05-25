@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.hotelpms.user.UserDAO">
+	<insert id="setJoin" parameterType="UserVO" >
+		INSERT INTO USER(ID,PASSWORD,PHONENUMBER,NAME,EMAIL,ROLENAME)
+		VALUES (#{id},#{password},#{phoneNumber},#{name},#{email},'ROLE_MEMBER')
+	</insert>
+	<select id="getLogin" parameterType="UserVO" resultType="UserVO" >
+		SELECT *
+		FROM USER
+		WHERE id=#{id}
+		<!-- 패스워드를 여기서 비교하지 않는다(AND M.PASSWORD=#{paaword} 삭제함) -->
+	</select>
+	<select id="idDuplicateCheck" resultType="UserVO" parameterType="UserVO">
+		SELECT ID FROM USER WHERE ID=#{id}
+	</select>
+
+</mapper>

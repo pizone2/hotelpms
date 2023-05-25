@@ -42,9 +42,10 @@
                     <br>
                     <spring:message code="reservation" var="r" text=""/>
                     <h1>${r}</h1>
-                    <p>Here are the best hotel booking sites, including recommendations for international
-                        travel and for finding low-priced hotel rooms.</p>
-                    <a href="#" class="primary-btn">Discover Now</a>
+                    <spring:message code="homesite" var="hs" text=""/>
+                    <p>${hs}</p>
+                    <spring:message code="discover" var="ds" text=""/>
+                    <a href="#" class="primary-btn">${ds}</a>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
@@ -64,6 +65,10 @@
                             <input id="remember" name="remember" value="remember" type="checkbox" data-sb-validations="required,email" />
                             <label for="remember">ID 기억하기</label>
                         </div>
+<%--                        <a href="/oauth2/authorization/kakao">KaKao Login</a>--%>
+                        <a href="/oauth2/authorization/kakao">
+                            <img src="/img/kakao_login.png" alt="대체 텍스트">
+                        </a>
                         <button  id="submitButton" type="submit">확인</button>
                     </form>
                 </div>

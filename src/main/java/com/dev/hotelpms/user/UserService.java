@@ -1,4 +1,4 @@
-package com.dev.hotelpms.customer;
+package com.dev.hotelpms.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import org.springframework.validation.BindingResult;
 
 @Service
 @Slf4j
-public class CustomerService implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
-    private CustomerDAO customerDAO;
+    private UserDAO userDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -23,20 +23,20 @@ public class CustomerService implements UserDetailsService {
         //db에서 꺼낸 로그인정보가지고 service
         log.error("==================Spring Security Login==================");
         log.error("=================={}==================", id);
-        CustomerVO customerVO = new CustomerVO();
-        customerVO.setId(id);
+        UserVO userVO = new UserVO();
+        userVO.setId(id);
         try {
-            customerVO = customerDAO.getLogin(customerVO);
+            userVO = userDAO.getLogin(userVO);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         // TODO Auto-generated method stub
-        return customerVO;
+        return userVO;
     }
 
     //패스워드가 일치하는지 검증하는 메서드 + 아이디 중복 체크 메서드
-    public boolean memberCheck(CustomerVO customerVO, BindingResult bindingResult) throws Exception{
+    public boolean memberCheck(UserVO userVO, BindingResult bindingResult) throws Exception{
         boolean result = false;
         //false : error가 없음, 검증 성공
         //true : error가 있음, 검증 실패
@@ -45,12 +45,12 @@ public class CustomerService implements UserDetailsService {
         result = bindingResult.hasErrors();
 
         //2. password 일치 검증
-        if(!customerVO.getPassword().equals(customerVO.getPasswordCheck())) {
+        if(!userVO.getPassword().equals(userVO.getPasswordCheck())) {
             result = true;
             bindingResult.rejectValue("passwordCheck", "customer.password.notEqual");
         }
         //3. ID 중복 검사
-        CustomerVO checkMember = customerDAO.idDuplicateCheck(customerVO);
+        UserVO checkMember = userDAO.idDuplicateCheck(userVO);
         if(checkMember != null) {
             result=true;
             bindingResult.rejectValue("id", "customer.id.notEqual");
@@ -59,13 +59,14 @@ public class CustomerService implements UserDetailsService {
         return result;
     }
 
-    public int setJoin(CustomerVO customerVO) throws Exception{
-        customerVO.setPassword(passwordEncoder.encode(customerVO.getPassword()));
-        int result = customerDAO.setJoin(customerVO);
+    public int setJoin(UserVO userVO) throws Exception{
+        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+        int result = userDAO.setJoin(userVO);
+        userVO.setRoleName("ROLE_MEMBER");
         return result;
     }
 
-    public CustomerVO getCustomer(CustomerVO customerVO) throws Exception {
-        return customerDAO.getCustomer(customerVO);
+    public UserVO getCustomer(UserVO userVO) throws Exception {
+        return userDAO.getCustomer(userVO);
     }
 }

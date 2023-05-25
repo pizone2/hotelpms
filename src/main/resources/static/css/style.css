@@ -508,7 +508,7 @@ ul, ol {
 	padding-top: 145px;
 }
 .hero-text h1 {
-	font-size: 80px;
+	font-size: 60px;
 	line-height: 90px;
 	color: #ffffff;
 	margin-bottom: 16px;
@@ -604,7 +604,7 @@ ul, ol {
 	background: transparent;
 	width: 100%;
 	height: 46px;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 .hero-slider {
 	position: absolute;
