@@ -17,24 +17,57 @@
         IMP.init("imp83363020");
 
         function requestPay() {
+            let roomNumber  = 604 ;
+            let id = 'pizone';
+            let roomType = '스탠다드';
+            let checkinDate = '2020-12-12';
+            let checkoutDate = '2020-12-13';
+            let guestCount = 2;
+            let paymentAmount = 10;
+            let name = '김진서';
+            let reservationNumber = '3838';
+            let phoneNumber = '010-3445-2132';
+            let reservationEmail = 'rlawlstj0123@naver.com';
+
             IMP.request_pay(
                 {
                     pg: "html5_inicis.INIpayTest",
                     pay_method: "card",
                     merchant_uid: 'merchant_'+new Date().getTime(),
-                    name: "스위트룸",
-                    amount: 10,
-                    buyer_email: "Iamport@chai.finance",
-                    buyer_name: "포트원 기술지원팀",
-                    buyer_tel: "010-1234-5678",
-                    buyer_addr: "서울특별시 강남구 삼성동",
+                    name: roomNumber,
+                    amount: paymentAmount,
+                    buyer_email: reservationEmail,
+                    buyer_name: name,
+                    buyer_tel: phoneNumber,
+                    buyer_addr: "서울특별시 금천구 가산디지털2로 95",
                     buyer_postcode: "123-456",
                 },
                 function (rsp) {
                     if (rsp.success) {
-                        var msg = '결제가 완료되었습니다.';
-                        alert(msg);
-                        location.href = "결제 완료 후 이동할 페이지 URL";
+                        $.ajax({
+                            url: '/pay/add',
+                            type: 'post',
+                            data: {
+                                'roomNumber':roomNumber,
+                                'id': id,
+                                'reservationEmail': reservationEmail,
+                                'paymentAmount':paymentAmount,
+                                'checkinDate':checkinDate,
+                                'checkoutDate':checkoutDate,
+                                'guestCount':guestCount,
+                                'roomType':roomType,
+                                'name':name,
+                                'reservationNumber':reservationNumber,
+                                'phoneNumber':phoneNumber
+
+                            },
+                            success:(res)=>{
+                                var msg = '결제가 완료되었습니다.';
+                                alert(msg);
+                                location.href = "pay/paymentDetail"
+                            }
+
+                        })
 
                     } else {
                         var msg = '결제에 실패하였습니다.';
