@@ -1,6 +1,5 @@
 package com.dev.hotelpms.pay;
 
-import com.dev.hotelpms.customer.CustomerVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

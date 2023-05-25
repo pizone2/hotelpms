@@ -17,4 +17,22 @@
 		SELECT ID FROM USER WHERE ID=#{id}
 	</select>
 
+	<select id="findId" resultType="UserVO" parameterType="String" >
+		SELECT ID
+		FROM USER
+		WHERE EMAIL = #{email}
+	</select>
+
+	<select id="findEmail" resultType="UserVO" parameterType="String">
+		SELECT EMAIL
+		FROM USER
+		WHERE ID = #{id}
+	</select>
+
+	<update id="saveTempPw" parameterType="UserVO">
+		UPDATE USER
+		SET PASSWORD = #{password}
+		WHERE ID = #{id}
+	</update>
+
 </mapper>
