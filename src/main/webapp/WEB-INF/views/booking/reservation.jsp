@@ -34,7 +34,7 @@
                 <div class="breadcrumb-text">
                     <h2>Reservation</h2>
                     <div class="bt-option">
-                        <a href="./index.html">Home</a>
+                        <a href="/booking/reservation">Home</a>
                         <span>Reservation</span>
                     </div>
                 </div>
@@ -53,7 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 
 var calendar = new FullCalendar.Calendar(calendarEl, {
-events: [],
+events: [
+
+
+],
     eventClick: function(info) {
         var clickedEvent = info.event;
         var clickedDate = clickedEvent.start;
