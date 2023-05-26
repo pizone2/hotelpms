@@ -4,7 +4,6 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.hotelpms.room.BookingDAO">
 
-
     <resultMap type="RoomVO" id="prod">
         <!--Primary Key  -->
         <id column="ROOMNUMBER" property="roomNumber" />
@@ -24,7 +23,14 @@
         <!-- 1:1 관계일 때 -->
         <!--<association property="" javaType="">-->
     </resultMap>
+    <select id="getRoomTypeList" resultType="RoomTypeVO">
+        SELECT * FROM ROOMTYPE
+    </select>
 
+    <select id="getReserved"  parameterType="BookingVO"  resultType="ReservedVO">
+        SELECT DISTINCT(ROOMTYPE) FROM RESERVED
+        WHERE ROOMRESSTATUS= '예약가능' AND RESERVATIONDATE = #{checkinDate}
+    </select>
 
 
 </mapper>
