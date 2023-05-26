@@ -60,10 +60,11 @@
                             <label for="password">PASSWORD</label>
                             <input type="password" class="date-input hasDatepicker" id="password" name="password">
                         </div>
-                        <a href="/customer/join" style="color: #888888; font-size: small; text-decoration: underline;">회원가입을 하시겠습니까?</a>
+                        <a href="/customer/join" style="color: #888888; font-size: small; text-decoration: underline;">회원가입을 하시겠습니까?</a><br>
                         <div class="custom1-control custom-checkbox small">
                             <input id="remember" name="remember" value="remember" type="checkbox" data-sb-validations="required,email" />
                             <label for="remember">ID 기억하기</label>
+                            <a href="/customer/findIdPw" style="color: #888888; font-size: small; text-decoration: underline;">아이디∙비밀번호 찾기</a>
                         </div>
 <%--                        <a href="/oauth2/authorization/kakao">KaKao Login</a>--%>
                         <a href="/oauth2/authorization/kakao">
