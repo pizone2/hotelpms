@@ -9,10 +9,4 @@ public class RoomTypeVO {
     private String roomType;
     private  Long capacity;
     private  Long roomPrice;
-
-
-
-
-
-
 }

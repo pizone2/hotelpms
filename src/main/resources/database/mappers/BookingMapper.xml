@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.hotelpms.room.BookingDAO">
+
+
+    <resultMap type="RoomVO" id="prod">
+        <!--Primary Key  -->
+        <id column="ROOMNUMBER" property="roomNumber" />
+        <!-- 그외 나머지 -->
+        <result column="ROOMTYPE" property="roomType" />
+        <result column="ROOMNAME" property="roomName" />
+        <result column="ROOMSTATUS" property="roomStatus" />
+        <result column="ISUSED" property="isUsed" />
+
+        <collection property="RoomTypeVOs" javaType="List" ofType="RoomTypeVO" >
+            <id  column="ROOMTYPE"  property="roomType" />
+            <result  column="NUM" property="num"/>
+            <result  column="CAPACITY" property="capacity"/>
+            <result  column="ROOMPRICE" property="roomPrice"/>
+        </collection>
+
+        <!-- 1:1 관계일 때 -->
+        <!--<association property="" javaType="">-->
+    </resultMap>
+
+
+
+</mapper>
