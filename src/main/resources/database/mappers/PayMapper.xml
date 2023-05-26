@@ -32,7 +32,13 @@
     <update id="setResstatus" parameterType="PayVO">
         UPDATE RESERVED
         SET ROOMRESSTATUS = '예약완료'
-        WHERE ROOMNUMBER ={roomNumber} AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+        WHERE ROOMNUMBER = (
+        SELECT ROOMNUMBER
+        FROM BOOKING
+        ORDER BY RESERVATIONNUMBER DESC
+        LIMIT 1
+        )
+        AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
     </update>
 
 </mapper>
