@@ -9,5 +9,6 @@
         <typeAlias type="com.dev.hotelpms.room.BookingVO" alias="BookingVO" />
         <typeAlias type="com.dev.hotelpms.room.RoomVO" alias="RoomVO" />
         <typeAlias type="com.dev.hotelpms.room.RoomTypeVO" alias="RoomTypeVO" />
+			<typeAlias type="com.dev.hotelpms.room.ReservedVO" alias="ReservedVO" />
 		</typeAliases>
 </configuration>
