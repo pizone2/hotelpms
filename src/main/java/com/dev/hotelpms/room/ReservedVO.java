@@ -4,12 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
-
 @Setter
 @Getter
 public class ReservedVO {
-    private Integer reservationNum;
-    private Integer roomNumber;
+    private  Long reservationNum;
     private Date reservationDate;
-    private String roomType;
+    private  Long roomNumber;
+    private  String roomType;
+
+
+
 }
