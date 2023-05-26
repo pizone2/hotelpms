@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class BookingService {
@@ -13,9 +15,12 @@ public class BookingService {
     @Autowired
     private BookingDAO bookingDAO;
 
-    public UserVO getSucessReserve(UserVO userVO) throws Exception{
-        userVO = bookingDAO.getSucessReserve();
-        return userVO;
+    public List<ReservedVO> getSucessReserve(String roomType) throws Exception{
+        return bookingDAO.getSucessReserve(roomType);
+    }
+
+    public List<ReservedVO> getPossibleReserve() throws Exception{
+        return bookingDAO.getPossibleReserve();
     }
 
 
