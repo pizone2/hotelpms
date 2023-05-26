@@ -71,7 +71,7 @@ public class UserSocialService extends DefaultOAuth2UserService {
 		m = (HashMap<String,Object>) map.get("properties");
 		log.error("NichkName{}::",m.get("nickname"));
 		userVO.setName(m.get("nickname").toString());
-		userVO.setRoleName("ROLE_MEMBER");
+		userVO.setRoleName("ROLE_SOCIAL");
 		try {
 			int result = userDAO.setJoin(userVO);
 		} catch (Exception e) {

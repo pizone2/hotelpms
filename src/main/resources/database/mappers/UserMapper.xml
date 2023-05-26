@@ -35,4 +35,7 @@
 		WHERE ID = #{id}
 	</update>
 
+	<select id="emailDuplicateCheck" resultType="UserVO" parameterType="UserVO">
+		SELECT EMAIL FROM USER WHERE EMAIL=#{email}
+	</select>
 </mapper>

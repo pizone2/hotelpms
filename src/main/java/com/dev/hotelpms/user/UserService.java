@@ -56,7 +56,14 @@ public class UserService implements UserDetailsService {
         UserVO checkMember = userDAO.idDuplicateCheck(userVO);
         if(checkMember != null) {
             result=true;
-            bindingResult.rejectValue("id", "customer.id.notEqual");
+            bindingResult.rejectValue("id", "customer.id.duplication");
+        }
+
+        //3. EMAIL 중복 검사
+        UserVO checkMail = userDAO.emailDuplicateCheck(userVO);
+        if(checkMail != null) {
+            result=true;
+            bindingResult.rejectValue("email", "customer.email.duplication");
         }
 
         return result;
