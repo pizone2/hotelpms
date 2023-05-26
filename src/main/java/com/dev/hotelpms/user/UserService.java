@@ -2,12 +2,15 @@ package com.dev.hotelpms.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -68,5 +71,17 @@ public class UserService implements UserDetailsService {
 
     public UserVO getCustomer(UserVO userVO) throws Exception {
         return userDAO.getCustomer(userVO);
+    }
+
+    public UserVO findId(String email) throws Exception {
+        return userDAO.findId(email);
+    }
+
+    public UserVO findEmail(String id) throws Exception {
+        return userDAO.findEmail(id);
+    }
+
+    public int saveTempPw(UserVO userVO) throws Exception {
+        return userDAO.saveTempPw(userVO);
     }
 }

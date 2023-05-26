@@ -15,4 +15,5 @@ public class SampleController {
         mv.setViewName("temp/sample");
         return mv;
     }
+
 }
