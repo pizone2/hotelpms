@@ -30,50 +30,49 @@
             <div class="col-lg-4">
                 <div class="contact-text">
                     <h2>MyPage</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                    <p><sec:authentication property="principal.name"/>고객님 환영합니다. </p>
 
                     <table>
                         <tbody>
                         <tr>
                             <td class="c-o">name:</td>
-                            <td>${customerVO.name}</td>
+                            <td><sec:authentication property="principal.name"/></td>
                         </tr>
                         <tr>
                             <td class="c-o">id:</td>
-                            <td>${customerVO.id}</td>
+                            <td><sec:authentication property="principal.id"/></td>
                         </tr>
                         <tr>
                             <td class="c-o">Phone:</td>
-                            <td>${customerVO.phoneNumber}</td>
+                            <td><sec:authentication property="principal.phoneNumber" /></td>
                         </tr>
                         <tr>
                             <td class="c-o">Email:</td>
-                            <td>${customerVO.email}</td>
+                            <td><sec:authentication property="principal.email" /></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-lg-7 offset-lg-1">
-                <form action="#" class="contact-form">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <input type="text" placeholder="Your Name">
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" placeholder="Your Email">
-                        </div>
-                        <div class="col-lg-12">
-                            <textarea placeholder="Your Message"></textarea>
-                            <button type="submit">Submit Now</button>
+                        <div class="col-lg-6 contact-form">
+                            <h3>비밀번호 변경</h3>
+                            <input type="text" placeholder="비밀번호를 입력해 주세요 ">
+                            <input type="text" placeholder="새 비밀번호 확인 ">
                         </div>
                     </div>
-                </form>
+                <div class="row">
+                    <div class="col-lg-6 contact-form">
+                        <h3>회원정보 변경</h3>
+                        <input type="text" placeholder="비밀번호를 입력해 주세요 ">
+                        <input type="text" placeholder="새 비밀번호 확인 ">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="map" style="width:500px;height:400px;"></div>
+<%--        <div id="map" style="width:500px;height:400px;"></div>--%>
 
 
 
