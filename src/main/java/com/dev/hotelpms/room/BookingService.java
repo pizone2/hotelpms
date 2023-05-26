@@ -23,5 +23,12 @@ public class BookingService {
         return bookingDAO.getPossibleReserve();
     }
 
+    public List<RoomTypeVO> getRoomTypeList(RoomTypeVO roomTypeVO) throws Exception {
+        return bookingDAO.getRoomTypeList(roomTypeVO);
+    }
+
+    public List<BookingVO> getReserved(BookingVO bookingVO) throws Exception {
+        return bookingDAO.getReserved(bookingVO);
+    }
 
 }
