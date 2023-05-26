@@ -23,9 +23,10 @@ public class BookingVO {
      private String reservationStatus;
      private Long paymentAmount;
 
+
      //객실 예약 정보를 불러오기 위한 리스트 선언
      private List<RoomVO> roomVOs;
-
+     private RoomTypeVO roomTypeVO;
 
 
 }
