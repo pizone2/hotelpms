@@ -224,5 +224,6 @@
 <script src="/calendar/js/rome.js"></script>
 <script src="/calendar/js/main.js"></script>
 <script src="/js/reservationRoom.js"></script>
+<script src="/js/pay.js"></script>
 </body>
 </html>

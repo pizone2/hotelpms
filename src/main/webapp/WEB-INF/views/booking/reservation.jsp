@@ -70,7 +70,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -80,7 +80,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -90,7 +90,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -100,7 +100,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -110,7 +110,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -120,7 +120,7 @@ events: [
         title : '${dto.roomType}',
         start : '${dto.reservationDate}',
         end : '${dto.reservationDate}',
-        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
         color : '#0000FF'
     },
     </c:forEach>
