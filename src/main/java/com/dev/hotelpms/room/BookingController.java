@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/booking/*")
 @Slf4j
 public class BookingController {
-//테스트
+//테스트ㄴ
     @Autowired
     private BookingService bookingService;
 
