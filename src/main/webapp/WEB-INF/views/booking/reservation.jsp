@@ -68,60 +68,67 @@ events: [
     <c:forEach var="dto" items="${duubleList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#FF0000'
+        color : '#FF0000',
+        textColor  : '#000000'
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${deluxList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#FF0000'
+        color : '#FF0000',
+        textColor  : '#000000'
+
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${sweetList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#FF0000'
+        color : '#FF0000',
+        textColor  : '#000000'
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${standardList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#FF0000'
+        color : '#FF0000',
+        textColor  : '#000000'
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${twinList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#FF0000'
+        color : '#FF0000',
+        textColor  : '#000000'
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${possibleList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}',
-        end : '${dto.reservationDate}',
+        start : '${dto.reservationDate}'+'T15:00:00',
+        end : '${dto.reservationDate}'+'T15:00:00',
         url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
-        color : '#0000FF'
+        color : '#0000FF',
+        textColor  : '#000000'
     },
     </c:forEach>
 
