@@ -34,33 +34,30 @@
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
             <div class="modal-body">
-
-
-
                 <div class="login-container animated fadeInDown bootstrap snippets bootdeys">
                     <div class="loginbox bg-white">
                         <div class="loginbox-title">Change Password</div>
 
                         <div class="loginbox-or">
                             <div class="or-line"></div>
-
                         </div>
-                        <div class="loginbox-textbox">
-                            <input type="text" class="form-control" placeholder="현재 비밀번호">
-                        </div>
-                        <div class="loginbox-textbox">
-                            <input type="text" class="form-control" placeholder="새 비밀번호">
-                        </div>
-                        <div class="loginbox-textbox">
-                            <input type="text" class="form-control" placeholder="새 비밀번호 확인">
-                        </div>
-                        <div class="loginbox-forgot">
-                            <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
-                        </div>
-                        <div class="loginbox-submit">
-                            <input type="button" class="btn btn-primary btn-block" value="Save Password">
-                        </div>
-
+                        <form>
+                            <div class="loginbox-textbox">
+                                <input type="text" class="form-control" placeholder="현재 비밀번호">
+                            </div>
+                            <div class="loginbox-textbox">
+                                <input type="text" class="form-control" placeholder="새 비밀번호">
+                            </div>
+                            <div class="loginbox-textbox">
+                                <input type="text" class="form-control" placeholder="새 비밀번호 확인">
+                            </div>
+                            <div class="loginbox-forgot">
+                                <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
+                            </div>
+                            <div class="loginbox-submit">
+                                <input type="button" class="btn btn-primary btn-block" value="Save Password">
+                            </div>
+                        </form>
                     </div>
                     <div class="logobox">
                     </div>
@@ -103,11 +100,11 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="<sec:authentication property="principal.name"/>"></div>
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name"  value="<sec:authentication property="principal.name"/>"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" placeholder="enter phone number" value="<sec:authentication property="principal.phoneNumber" />"></div>
-                    <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control" placeholder="enter address line 1" value="<sec:authentication property="principal.id"/>"></div>
+                    <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control" placeholder="enter address line 1" readonly value="<sec:authentication property="principal.id"/>"></div>
                     <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="enter address line 2" value="<sec:authentication property="principal.email" />"></div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>

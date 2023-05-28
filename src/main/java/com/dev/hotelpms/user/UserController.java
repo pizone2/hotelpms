@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,6 +85,17 @@ public class UserController {
         mv.setViewName("customer/myPage");
         return mv;
     }
+    @GetMapping("updateCustomer")
+    public String updateUser() {
+        return "updateUser";
+    }
+
+    @PutMapping
+    public ModelAndView updateUser(UserVO userVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        int result = userService.setCustomer(userVO);
+        return mv;
+    }
 
     @GetMapping("findIdPw")
     public ModelAndView findIdPw(UserVO userVO) throws Exception {
@@ -123,7 +135,6 @@ public class UserController {
         int result = userService.saveTempPw(userVO);
         return tempPw;
     }
-
 
 
 }

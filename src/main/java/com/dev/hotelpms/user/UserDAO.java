@@ -22,4 +22,6 @@ public interface UserDAO {
     public UserVO findEmail(String id) throws  Exception;
 
     public int saveTempPw(UserVO userVO) throws  Exception;
+
+    public int updateCustomer(UserVO userVO) throws Exception;
 }

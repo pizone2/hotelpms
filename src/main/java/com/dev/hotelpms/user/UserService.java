@@ -84,4 +84,12 @@ public class UserService implements UserDetailsService {
     public int saveTempPw(UserVO userVO) throws Exception {
         return userDAO.saveTempPw(userVO);
     }
+
+    public int updateCustomer(UserVO userVO) throws Exception {
+        return userDAO.updateCustomer(userVO);
+    }
+
+    public void updateUser(UserVO userVO) throws Exception {
+        UserVO persistance = userReposi
+    }
 }
