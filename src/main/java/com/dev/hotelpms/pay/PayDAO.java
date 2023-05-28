@@ -10,4 +10,6 @@ public interface PayDAO {
 
     public int setPayAdd(PayVO payVO)throws Exception;
 
+
+    public int setResstatus(PayVO payVO)throws Exception;
 }

@@ -25,6 +25,16 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="/calendar/css/style.css">
+    <!-- jQuery -->
+    <script
+            type="text/javascript"
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+    ></script>
+    <!-- iamport.payment.js -->
+    <script
+            type="text/javascript"
+            src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+    ></script>
 
 
     <title>Calendar #7 (inline)</title>
@@ -192,7 +202,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>총계</th>
-                            <td>116,000원</td>
+                            <td id="paymentAmount1">원</td>
                         </tr>
                         <tr>
                             <th>할인요금</th>
@@ -200,7 +210,7 @@
                         </tr>
                         <tr>
                             <th>총 결제금액</th>
-                            <td>116,000원</td>
+                            <td id="paymentAmount2">원</td>
                         </tr>
 
                     </table>
