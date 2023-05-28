@@ -87,7 +87,6 @@
     <div class="custom-section-content">
         <!-- 새로운 <div> 태그를 추가하고 패딩과 배경색을 적용합니다 -->
         <div class="custom-padding" style="background-color: white; padding: 50px;">
-            <!-- 여기에 내용을 추가하거나 원하는 디자인을 구성할 수 있습니다 -->
         </div>
     </div>
 </div>

@@ -51,7 +51,7 @@
                     <div class="nav-menu">
                         <nav class="mainmenu">
                             <ul>
-                                <li class="active"><a href="/">Home</a></li>
+                                <li class="active"><a href="/customer/login">Home</a></li>
                                 <li><a href="/booking/reservation">Rooms</a></li>
                                 <li><a href="#">Reservation</a></li>
                                 <sec:authorize access="isAuthenticated()">
