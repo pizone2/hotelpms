@@ -156,6 +156,7 @@
         </form>
 </div>
 
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -174,17 +175,17 @@
 
                             <div class="checkout__input">
 
-                                <div style="display: block; width: 100%;">
+                                <div style="display: block; width: 100%; text-align: left;">
                                     <input class="form-check-input" type="checkbox" value="" id="check1">
                                     제 1조 (목 적) 개인정보 제 3자 동의
                                 </div>
                                 <h6>&nbsp;</h6>
-                                <div style="display: block; width: 100%;">
+                                <div style="display: block; width: 100%; text-align: left;">
                                     <input class="form-check-input" type="checkbox" value="" id="check2">
                                     제 2 조 (용어의 정의) 개인정보취급 동의
                                 </div>
                                 <h6>&nbsp;</h6>
-                                <div style="display: block; width: 100%;">
+                                <div style="display: block; width: 100%; text-align: left;">
                                     <input class="form-check-input" type="checkbox" value="" id="check3">
                                     제 3 조 (용어의 정의) 개인정보취급 동의
                                 </div>
@@ -196,8 +197,8 @@
 
                 </div>
 
-                <div class="col-lg-6">
-                    <h3>예약 결제금액</h3>
+                <div class="col-lg-6" style=" text-align: left;">
+                    <h3 style=" text-align: left;">예약 결제금액</h3>
                     <br>
                     <table class="table table-bordered">
                         <tr>
@@ -215,8 +216,11 @@
 
                     </table>
 
-                    <button id="requestPay">결제하기</button>
-                    <button>취소</button>
+                    <div style="display: flex; justify-content: center;">
+                        <button id="requestPay" class="btn btn-primary" style="margin-right: 10px;">결제하기</button>
+                        <button class="btn btn-secondary" style="margin-left: 10px;">취소</button>
+                    </div>
+                    <h3>&nbsp;</h3><h3>&nbsp;</h3>
                 </div>
             </div>
         </div>
