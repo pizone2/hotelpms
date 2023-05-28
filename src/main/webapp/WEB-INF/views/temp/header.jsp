@@ -27,7 +27,7 @@
     <nav class="mainmenu mobile-menu">
         <ul>
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/sample/sample">Rooms</a></li>
+            <li><a href="/booking/reservation">Rooms</a></li>
             <li><a href="#">Reservation</a></li>
             <li><a href="/customer/login">Login</a></li>
         </ul>
@@ -51,7 +51,7 @@
                     <div class="nav-menu">
                         <nav class="mainmenu">
                             <ul>
-                                <li class="active"><a href="/customer/login">Home</a></li>
+                                <li class="active"><a href="/">Home</a></li>
                                 <li><a href="/booking/reservation">Rooms</a></li>
                                 <li><a href="#">Reservation</a></li>
                                 <sec:authorize access="isAuthenticated()">
