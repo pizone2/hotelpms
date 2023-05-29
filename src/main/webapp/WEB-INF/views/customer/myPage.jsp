@@ -99,6 +99,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
+                <form id="updateUserForm" method="post" action="userUpdate">
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name"  value="<sec:authentication property="principal.name"/>"></div>
                 </div>
@@ -107,7 +108,10 @@
                     <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control" placeholder="enter address line 1" readonly value="<sec:authentication property="principal.id"/>"></div>
                     <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="enter address line 2" value="<sec:authentication property="principal.email" />"></div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center">
+                    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                </div>
+            </form>
             </div>
         </div>
         <div class="col-md-4">

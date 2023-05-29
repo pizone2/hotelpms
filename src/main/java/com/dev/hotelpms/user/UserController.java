@@ -90,10 +90,11 @@ public class UserController {
         return "updateUser";
     }
 
-    @PutMapping
+    @PostMapping("userUpdate")
     public ModelAndView updateUser(UserVO userVO) throws Exception {
         ModelAndView mv = new ModelAndView();
-        int result = userService.setCustomer(userVO);
+        int result = userService.updateUser(userVO);
+        mv.setViewName("redirect:/myPage");
         return mv;
     }
 
