@@ -17,11 +17,16 @@
     <!--css-->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
 <style>
-    .fc-day a {
-        color: black;
+    .fc-day-sun a {
+        color: red;
         text-decoration: none;
     }
 
+    /* 토요일 날짜 파란색 */
+    .fc-day-sat a {
+        color: blue;
+        text-decoration: none;
+    }
 </style>
 
 </head>
@@ -50,42 +55,22 @@
 </div>
 <!-- Breadcrumb Section End -->
 
-<!-- 콘텐츠 -->
-<div class="container">
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb">
-        <!-- Breadcrumb 내용 -->
-    </nav>
+<div id='calendar'></div>
+<!-- calendar script -->
 
-    <!-- 캘린더 -->
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div id="calendar"></div>
-        </div>
-    </div>
-</div>
-
-<div class="custom-section">
-    <div class="custom-section-content">
-        <!-- 새로운 <div> 태그를 추가하고 패딩과 배경색을 적용합니다 -->
-        <div class="custom-padding" style="background-color: white; padding: 50px;">
-        </div>
-    </div>
-</div>
-<!-- Hero Section End -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 var calendarEl = document.getElementById('calendar');
 
 var calendar = new FullCalendar.Calendar(calendarEl, {
-
 events: [
     <c:forEach var="dto" items="${duubleList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -93,18 +78,19 @@ events: [
     <c:forEach var="dto" items="${deluxList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#FF0000'
-
     },
     </c:forEach>
 
     <c:forEach var="dto" items="${sweetList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -112,8 +98,9 @@ events: [
     <c:forEach var="dto" items="${standardList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -121,8 +108,9 @@ events: [
     <c:forEach var="dto" items="${twinList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#FF0000'
     },
     </c:forEach>
@@ -130,28 +118,85 @@ events: [
     <c:forEach var="dto" items="${possibleList}">
     {
         title : '${dto.roomType}',
-        start : '${dto.reservationDate}'+'T15:00:00',
-        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+        start : '${dto.reservationDate}',
+        end : '${dto.reservationDate}',
+        url : 'http://localhost/booking/reservationRoom?checkinDate?=${dto.reservationDate}',
         color : '#0000FF'
     },
     </c:forEach>
 
 ],
-
     eventClick: function(info) {
+       //  var clickedEvent = info.event;
+       //  var clickedDate = clickedEvent.start;
+       //  var formattedDate = formatDate(clickedDate);
+       //  console.log(formattedDate);
+       // //window.location.href = info.event.url; // 클릭한 이벤트의 URL로 이동
+       //  window.location.href = info.event.url + formattedDate;
     },
-    // initialView: "dayGridMonth",
-    // firstDay: 1,
-    // titleFormat: function (date) {
-    //     year = date.date.year;
-    //     month = date.date.month + 1;
-    //
-    //     return year + "년 " + month + "월";
-    // },
+    initialView: "dayGridMonth",
+    firstDay: 1,
+    titleFormat: function (date) {
+        year = date.date.year;
+        month = date.date.month + 1;
+
+        return year + "년 " + month + "월";
+    },
 
 });
 
+// var today = new Date();
+// var startDate = new Date('2023-05-01');
+// var endDate = new Date('2024-05-01');
+//
+//     for (var d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+//         var formattedDate = formatDate(d);
+//
+//         if (d >= today) {
+//             var event1 = {
+//                 title: 'Double',
+//                 start: new Date(d),
+//                 end: new Date(d),
+//                 url: '/booking/reservationRoom?checkinDate=' + formattedDate
+//
+//             };
+//             calendar.addEvent(event1);
+//
+//             var event2 = {
+//                 title: 'Suite',
+//                 start: new Date(d),
+//                 end: new Date(d),
+//                 url: '/booking/reservationRoom?checkinDate=' + formattedDate
+//             };
+//             calendar.addEvent(event2);
+//
+//             var event3 = {
+//                 title: 'Single',
+//                 start: new Date(d),
+//                 end: new Date(d),
+//                 url: '/booking/reservationRoom?checkinDate=' + formattedDate
+//             };
+//             calendar.addEvent(event3);
+//
+//             var event4 = {
+//                 title: 'Deluxe',
+//                 start: new Date(d),
+//                 end: new Date(d),
+//                 url: '/booking/reservationRoom?checkinDate=' + formattedDate
+//             };
+//             calendar.addEvent(event4);
+//         }
+//     }
+
         calendar.render();
+
+        // function formatDate(date) {
+        //     var year = date.getFullYear();
+        //     var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        //     var day = ('0' + date.getDate()).slice(-2);
+        //     return year + '-' + month + '-' + day;
+        //     console.log(year);
+        // }
 
 });
         </script>

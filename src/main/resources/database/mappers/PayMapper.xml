@@ -4,12 +4,41 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.hotelpms.pay.PayDAO">
 
-   <select id="getPayDetail" parameterType="PayVO" resultType="PayVO">
-       SELECT * FROM BOOKING WHERE ID = 'pizone' ORDER BY PAYMENTDATE  DESC LIMIT 1;
-   </select>
+    <select id="getPayDetail" parameterType="PayVO" resultType="PayVO">
+        SELECT * FROM BOOKING WHERE ID = #{id} ORDER BY RESERVATIONNUMBER  DESC LIMIT 1;
+    </select>
+
+    <!--    <insert id="setPayAdd" parameterType="PayVO">-->
+    <!--        INSERT INTO BOOKING VALUES(NULL,#{roomNumber},#{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber})-->
+    <!--    </insert>-->
 
     <insert id="setPayAdd" parameterType="PayVO">
-        INSERT INTO BOOKING VALUES(#{reservationNumber},#{roomNumber},#{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber})
+        INSERT INTO BOOKING
+        SELECT NULL, R.ROOMNUMBER, #{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber}
+        FROM (
+        SELECT ROOMNUMBER
+        FROM ROOM
+        WHERE ROOMTYPE = #{roomType}
+        AND ROOMNUMBER NOT IN (
+        SELECT ROOMNUMBER
+        FROM BOOKING
+        WHERE CHECKOUTDATE >= #{checkoutDate} OR CHECKINDATE  <![CDATA[ <= ]]>#{checkinDate}
+        )
+        ORDER BY ROOMNUMBER ASC
+        LIMIT 1
+        ) AS R;
     </insert>
+
+    <update id="setResstatus" parameterType="PayVO">
+        UPDATE RESERVED
+        SET ROOMRESSTATUS = '예약완료'
+        WHERE ROOMNUMBER = (
+        SELECT ROOMNUMBER
+        FROM BOOKING
+        ORDER BY RESERVATIONNUMBER DESC
+        LIMIT 1
+        )
+        AND RESERVATIONDATE BETWEEN #{checkinDate} AND #{checkoutDate};
+    </update>
 
 </mapper>
