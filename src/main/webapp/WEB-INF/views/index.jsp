@@ -54,7 +54,7 @@
 
 
 
-    <!-- Blog Section Begin -->
+    <%--<!-- Blog Section Begin -->
     <section class="blog-section spad">
         <div class="container">
             <div class="row">
@@ -114,7 +114,14 @@
             </div>
         </div>
     </section>
-    <!-- Blog Section End -->
+    <!-- Blog Section End -->--%>
+    <div class="custom-section">
+        <div class="custom-section-content">
+            <!-- 새로운 <div> 태그를 추가하고 패딩과 배경색을 적용합니다 -->
+            <div class="custom-padding" style="background-color: white; padding: 50px;">
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Section Begin -->
     <c:import url="./temp/footer.jsp"></c:import>

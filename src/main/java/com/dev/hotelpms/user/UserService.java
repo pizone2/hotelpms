@@ -66,7 +66,21 @@ public class UserService implements UserDetailsService {
             bindingResult.rejectValue("email", "customer.email.duplication");
         }
 
+        // 4. 전화번호 형식 검증
+        if (!isValidPhoneNumber(userVO.getPhoneNumber())) {
+            result = true;
+            bindingResult.rejectValue("phoneNumber", "customer.phoneNumber.invalid");
+        }
+
         return result;
+    }
+
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // 전화번호 유효성 검사 로직 작성
+        // 예를 들어, 정규식을 사용하여 검사할 수 있습니다.
+        // 이 정규식은 "###-####-####" 형식의 전화번호를 나타냅니다.
+        String regex = "^\\d{3}-\\d{3,4}-\\d{4}$";
+        return phoneNumber.matches(regex);
     }
 
     public int setJoin(UserVO userVO) throws Exception{
