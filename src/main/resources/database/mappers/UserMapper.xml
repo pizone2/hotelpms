@@ -37,8 +37,8 @@
 
 	<update id="updateUser" parameterType="UserVO">
 		UPDATE USER
-		SET PASSWORD = #{phoneNumber},#{name},#{email}
+		SET phoneNumber = #{phoneNumber}, name = #{name}, email = #{email}
 		WHERE ID = #{id}
-
 	</update>
+
 </mapper>

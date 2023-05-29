@@ -85,16 +85,13 @@ public class UserController {
         mv.setViewName("customer/myPage");
         return mv;
     }
-    @GetMapping("updateCustomer")
-    public String updateUser() {
-        return "updateUser";
-    }
 
     @PostMapping("userUpdate")
-    public ModelAndView updateUser(UserVO userVO) throws Exception {
+    public ModelAndView updateUser(@ModelAttribute("userVO")UserVO userVO) throws Exception {
         ModelAndView mv = new ModelAndView();
         int result = userService.updateUser(userVO);
-        mv.setViewName("redirect:/myPage");
+        log.error(userVO.getPhoneNumber());
+        mv.setViewName("redirect:/customer/myPage");
         return mv;
     }
 
@@ -136,6 +133,14 @@ public class UserController {
         int result = userService.saveTempPw(userVO);
         return tempPw;
     }
-
+    @PostMapping("updatePw")
+    public ModelAndView updatePw(UserVO userVO) throws Exception {
+        int result = userService.saveTempPw(userVO);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/customer/myPage");
+        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+        log.error(userVO.getPassword());
+        return mv;
+    }
 
 }

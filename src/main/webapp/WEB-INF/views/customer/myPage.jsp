@@ -41,12 +41,13 @@
                         <div class="loginbox-or">
                             <div class="or-line"></div>
                         </div>
-                        <form>
+                        <form id="updatePw" method="post" action="updatePw">
+                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id" value="<sec:authentication property="principal.id"/>">
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" placeholder="현재 비밀번호">
+                                <input type="text" class="form-control" placeholder="현재 비밀번호" value="<sec:authentication property="principal.password"/>">
                             </div>
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" placeholder="새 비밀번호">
+                                <input type="text" class="form-control" name="password" placeholder="새 비밀번호">
                             </div>
                             <div class="loginbox-textbox">
                                 <input type="text" class="form-control" placeholder="새 비밀번호 확인">
@@ -55,7 +56,7 @@
                                 <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
                             </div>
                             <div class="loginbox-submit">
-                                <input type="button" class="btn btn-primary btn-block" value="Save Password">
+                                <input type="submit" class="btn btn-primary btn-block" value="Save Password">
                             </div>
                         </form>
                     </div>
@@ -101,12 +102,24 @@
                 </div>
                 <form id="updateUserForm" method="post" action="userUpdate">
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name"  value="<sec:authentication property="principal.name"/>"></div>
+                    <div class="col-md-6">
+                        <label class="labels">Name</label>
+                        <input type="text" class="form-control" placeholder="first name" name="name"  value="<sec:authentication property="principal.name"/>">
+                    </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" placeholder="enter phone number" value="<sec:authentication property="principal.phoneNumber" />"></div>
-                    <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control" placeholder="enter address line 1" readonly value="<sec:authentication property="principal.id"/>"></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="enter address line 2" value="<sec:authentication property="principal.email" />"></div>
+                    <div class="col-md-12">
+                        <label class="labels">Phone</label>
+                        <input type="text" class="form-control" placeholder="enter phone number" name="phoneNumber" value="<sec:authentication property="principal.phoneNumber" />">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">ID</label>
+                        <input type="text" class="form-control" placeholder="enter address line 1" readonly name="id" value="<sec:authentication property="principal.id"/>">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">Email</label>
+                        <input type="email" class="form-control" placeholder="enter address line 2" name="email" value="<sec:authentication property="principal.email" />">
+                    </div>
                 </div>
                 <div class="mt-5 text-center">
                     <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
@@ -120,6 +133,7 @@
 
                 <p>안녕하세요 <sec:authentication property="principal.name"/>고객님 방문해 주셔서 감사합니다. <br>귀하의 문의에 신속하게 답변드리겠습니다.</p>
                 <p>1:1 문의는 평일 오후 5시까지 (주말, 공휴일은 휴무) <br>접수된 문의만 당일 답변드리고 있습니다. 근무시간 외에 질문을 주신 경우 다음 영업일 근무시간에 순차적으로 답변해드립니다.</p>
+
             </div>
         </div>
     </div>
