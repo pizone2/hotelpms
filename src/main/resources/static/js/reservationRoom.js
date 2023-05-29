@@ -11,6 +11,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const checkinDate = urlParams.get('checkinDate');
 
 
+
 // $.ajax({
 //     url: "/booking/reservationRoom",
 //     type: "POST",
@@ -25,16 +26,22 @@ const checkinDate = urlParams.get('checkinDate');
 //     })
 
 
+
 $(".btn1").on("click", function() {
-    //각각의 행에 대한 정보를 가져오기 위한 방법
+
     const row = $(this).closest("tr");
+
+    // 다른 요소들의 값을 추출
     const rtype = row.find("#rtype").text();
     const guestCount = row.find("#guest").val();
+    //const stayDuration = row.find("#stayDuration").val();
     const stayDuration = parseInt(row.find("#stayDuration").val(), 10);
     const roomPrice = row.find("#roomPrice").text();
     let d = checkinDate
     const checkin = new Date(checkinDate);
 
+
+    // 7일을 더한 날짜 계산
     const futureDate = new Date(checkinDate);
     futureDate.setDate(futureDate.getDate() + stayDuration);
 
@@ -45,18 +52,50 @@ $(".btn1").on("click", function() {
 
 // 결과 출력
     const formattedDate = `${year}-${month}-${day}`;
+
+    console.log("ddd일 후 날짜:", formattedDate);
+    console.log("Check-in 날짜:", checkinDate);
+    console.log("숙박 기간dd (일):", stayDuration);
+
+
+    // 추출한 값을 활용하여 원하는 작업 수행
+    // 예: 정보를 출력하거나 다른 요소에 설정하는 등
     let f = roomPrice * stayDuration;
 
-    // 총합계금액 삽입해주기
+
+    // 예약 정보 출력
+    console.log("객실 유형:", rtype);
+    console.log("게스트 수:", guestCount);
+    console.log("숙박 기간:", stayDuration);
+    console.log("객실 가격:", roomPrice);
+
+    // //총합계금액 삽입해주기
      $("#paymentAmount").val(f);
-    // 객실타입
+    // //객실타입
      $("#roomType").val(rtype);
-    // 체크인 날짜
+    // //체크인 날짜
      $("#checkinDate").val(d);
     //체크아웃날짜
      $("#checkoutDate").val(formattedDate);
-    //인원수 삽입
+    // //인원수 삽입
      $("#guestCount").val(guestCount);
+
+
+
+
+    // //인원수
+    // let a = $("#guest").val();
+    // //객실형식
+    // let b = $("#rtype").val();
+    // //몇박묶을건지 박수
+    // let c =  $("#stayDuration").val();
+    // let d = checkinDate
+    // let e = checkinDate + c
+    // //총객실금액합계
+    // let f = $("#roomPrice");
+    // let tp = c*f ;
+    //
+    //
 
 
 });
