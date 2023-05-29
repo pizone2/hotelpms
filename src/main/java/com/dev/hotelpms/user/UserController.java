@@ -135,10 +135,10 @@ public class UserController {
     }
     @PostMapping("updatePw")
     public ModelAndView updatePw(UserVO userVO) throws Exception {
+        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
         int result = userService.saveTempPw(userVO);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/customer/myPage");
-        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
         log.error(userVO.getPassword());
         return mv;
     }
