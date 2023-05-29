@@ -86,20 +86,17 @@
                     <tr>
                         <td id="rtype">${vo.roomType}</td>
 
-
                         <c:forEach items="${room}" var="ro">
-
-                          <c:if test="${vo.roomType eq  ro.roomType}">
-                            <td>예약 가능</td>
-                          </c:if>
-
-                            <c:if test="${vo.roomType ne ro.roomType}">
-                                    <td>예약 완료</td>
-                            </c:if>
-
-
-
+                            <c:choose>
+                                <c:when test="${vo.roomType eq ro.roomType}">
+                                    <td><div class="bookable">예약 가능</div></td>
+                                </c:when>
+                                <c:otherwise>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
+
+
                         <td>
                             <select id="guest">
                                 <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
@@ -118,9 +115,7 @@
                                 <option value="6">6박 7일</option>
                             </select>
                         </td>
-                        <td>
-                            여기는 일단 비워두고
-                        </td>
+
                         <td>
                             <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
@@ -140,7 +135,6 @@
                 <input type="text" class="form-control" id="guestCount" name="guestCount">
                 <input type="date" class="form-control" id="checkinDate" name="checkinDate">
                 <input type="date" class="form-control" id="checkoutDate" name="checkoutDate">
-
                 <input type="text" class="form-control" id="paymentAmount" name="paymentAmount">
             </div>
         </form>
