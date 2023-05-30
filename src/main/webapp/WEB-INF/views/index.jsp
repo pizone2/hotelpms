@@ -17,6 +17,14 @@
     <c:import url="./temp/style.jsp"></c:import>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
     <!--css-->
+    <style>
+        .calender-date {
+            background: #ffffff;
+            padding: 13px 10px 20px 10px;
+            border-radius: 4px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -80,8 +88,8 @@
                 </div>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
-                <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-                    <div id="calendar"></div>
+                <div class="col-xl-5 col-lg-2 offset-xl-1 offset-lg-1" >
+                    <div id="calendar" class="calender-date"></div>
                 </div>
                 </sec:authorize>
 
@@ -105,39 +113,94 @@
 
 
 
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+<%--    <!-- Search model Begin -->--%>
+<%--    <div class="search-model">--%>
+<%--        <div class="h-100 d-flex align-items-center justify-content-center">--%>
+<%--            <div class="search-close-switch"><i class="icon_close"></i></div>--%>
+<%--            <form class="search-model-form">--%>
+<%--                <input type="text" id="search-input" placeholder="Search here.....">--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <!-- Search model end -->--%>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'timeGridWeek', // 일주일치 보기로 설정
-                slotDuration: '00:30:00', // 슬롯(시간 구간)의 기간 설정
-                slotLabelInterval: '01:00:00', // 슬롯 레이블의 간격 설정
+                slotDuration: '00:00:00', // 슬롯(시간 구간)의 기간 설정
+                slotLabelInterval: '00:00:00', // 슬롯 레이블의 간격 설정
                 slotLabelFormat: {
                     hour: 'numeric',
                     minute: '2-digit',
-                    omitZeroMinute: false,
+                    omitZeroMinute: true,
                     meridiem: 'short'
                 }, // 슬롯 레이블의 형식 설정
                 nowIndicator: true, // 현재 시간 표시 설정
                 headerToolbar: {
-                    left: 'prev,next today',
+                    left: 'prev,next',
                     center: 'title',
-                    right: 'timeGridWeek,timeGridDay'
+                    right: 'timeGridWeek'
                 }, // 헤더 영역 설정
+                eventMinHeight: 50, // 이벤트의 최소 높이 설정 (픽셀 단위)
+                slotMinTime: '15:00', // 오후 3시부터 시작
+                slotMaxTime: '16:00', // 오후 4시까지 종료
                 events: [
-                    // 이벤트 데이터 설정
-                    // ...
+                    <c:forEach var="dto" items="${duubleList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#FF0000'
+                    },
+                    </c:forEach>
+
+                    <c:forEach var="dto" items="${deluxList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#FF0000'
+
+                    },
+                    </c:forEach>
+
+                    <c:forEach var="dto" items="${sweetList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#FF0000'
+                    },
+                    </c:forEach>
+
+                    <c:forEach var="dto" items="${standardList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#FF0000'
+                    },
+                    </c:forEach>
+
+                    <c:forEach var="dto" items="${twinList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#FF0000'
+                    },
+                    </c:forEach>
+
+                    <c:forEach var="dto" items="${possibleList}">
+                    {
+                        title : '${dto.roomType}',
+                        start : '${dto.reservationDate}'+'T15:00:00',
+                        url : 'http://localhost/booking/reservationRoom?checkinDate=${dto.reservationDate}',
+                        color : '#0000FF'
+                    },
+                    </c:forEach>
                 ]
             });
 

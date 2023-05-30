@@ -108,11 +108,17 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
+                    <c:set var="count" value="0" />
+                    <c:forEach items="${room}" var="ro">
+                        <c:if test="${vo.roomType eq ro.roomType}">
+                            <c:set var="count" value="${count + 1}" />
+                        </c:if>
+                    </c:forEach>
 
-                    <c:if test="${empty room}">
-                        <td><div class="bookable font-weight-bold text-danger">예약 불가</div></td>
-                        <%-- 예약 가능한 방이 없을 때 --%>
+                    <c:if test="${count == 0}">
+                        <td><div class="bookable font-weight-bold text-danger">예약불가</div></td>
                     </c:if>
+
                     <td>
                         <select id="guest">
                             <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
