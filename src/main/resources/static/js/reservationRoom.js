@@ -71,7 +71,9 @@ $(".btn1").on("click", function() {
     console.log("객실 가격:", roomPrice);
 
     // //총합계금액 삽입해주기
-     $("#paymentAmount").val(f);
+    $("#paymentAmount").val(f);
+    $("#paymentAmount1").text(f+'원');
+    $("#paymentAmount2").text(f+'원')
     // //객실타입
      $("#roomType").val(rtype);
     // //체크인 날짜

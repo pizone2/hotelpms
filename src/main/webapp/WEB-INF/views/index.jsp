@@ -47,52 +47,52 @@
                         <spring:message code="homesite" var="hs" text=""/>
                         <p>${hs}</p>
                         <spring:message code="discover" var="ds" text=""/>
-                        <a href="#" class="primary-btn">${ds}</a>
+                        <a href="/booking/reservation" class="primary-btn">${ds}</a>
                     </div>
                 </div>
                 <sec:authorize access="isAuthenticated()">
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-                    <div class="card">
+                    <div class="card" >
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png?w=826&t=st=1685410931~exp=1685411531~hmac=aba334bfa86956cf27ba3e0af2fab07921b71a199210d274bef4d91c7be12a95" alt="Admin" class="rounded-circle p-1 bg-secondary" width="110">
                                 <div class="mt-3">
                                     <h4><sec:authentication property="principal.id"/></h4>
-                                    <div class="custom-padding" style="background-color: white; padding: 15px;">
-                                    </div>
+<%--                                    <div class="custom-padding" style="background-color: white; padding: 10px;"></div>--%>
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0">NAME</h6>
-                                    <span class="text-secondary"><sec:authentication property="principal.name"/></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0">PHONE</h6>
-                                    <span class="text-secondary"><sec:authentication property="principal.phoneNumber" /></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0">ID</h6>
-                                    <span class="text-secondary"><sec:authentication property="principal.id"/></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <h6 class="mb-0">EMAIL</h6>
-                                    <span class="text-secondary"><sec:authentication property="principal.email" /></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                            <p class="text-secondary mb-1 text-center" style="padding: 50px;">객실 예약 정보가 없습니다</p>
+                                <%-- <ul class="list-group list-group-flush">
+                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                         <h6 class="mb-0">NAME</h6>
+                                         <span class="text-secondary"><sec:authentication property="principal.name"/></span>
+                                     </li>
+                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                         <h6 class="mb-0">PHONE</h6>
+                                         <span class="text-secondary"><sec:authentication property="principal.phoneNumber" /></span>
+                                     </li>
+                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                         <h6 class="mb-0">ID</h6>
+                                         <span class="text-secondary"><sec:authentication property="principal.id"/></span>
+                                     </li>
+                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                         <h6 class="mb-0">EMAIL</h6>
+                                         <span class="text-secondary"><sec:authentication property="principal.email" /></span>
+                                     </li>
+                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                     </li>
+                                 </ul>--%>
+                             </div>
+                         </div>
+
                 </div>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
-                <div class="col-xl-5 col-lg-2 offset-xl-1 offset-lg-1" >
+                <div class="col-xl-5 col-lg-3 offset-xl-1 offset-lg-1" >
                     <div id="calendar" class="calender-date"></div>
                 </div>
                 </sec:authorize>
-
             </div>
         </div>
         <div class="hero-slider owl-carousel">
@@ -123,29 +123,21 @@
 <%--        </div>--%>
 <%--    </div>--%>
 <%--    <!-- Search model end -->--%>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridWeek', // 일주일치 보기로 설정
-                slotDuration: '00:00:00', // 슬롯(시간 구간)의 기간 설정
-                slotLabelInterval: '00:00:00', // 슬롯 레이블의 간격 설정
-                slotLabelFormat: {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    omitZeroMinute: true,
-                    meridiem: 'short'
-                }, // 슬롯 레이블의 형식 설정
-                nowIndicator: true, // 현재 시간 표시 설정
+                initialView: 'dayGridWeek', // 일주일치 보기로 설정
                 headerToolbar: {
                     left: 'prev,next',
                     center: 'title',
-                    right: 'timeGridWeek'
+                    right: 'dayGridWeek,dayGridDay'
                 }, // 헤더 영역 설정
-                eventMinHeight: 50, // 이벤트의 최소 높이 설정 (픽셀 단위)
-                slotMinTime: '15:00', // 오후 3시부터 시작
-                slotMaxTime: '16:00', // 오후 4시까지 종료
+                // eventMinHeight: 50, // 이벤트의 최소 높이 설정 (픽셀 단위)
+                // slotMinTime: '15:00', // 오후 3시부터 시작
+                // slotMaxTime: '16:00', // 오후 4시까지 종료
                 events: [
                     <c:forEach var="dto" items="${duubleList}">
                     {
