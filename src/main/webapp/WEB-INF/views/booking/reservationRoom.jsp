@@ -133,6 +133,7 @@
                     </td>
                     <td>
                         <div id="roomPrice" name="roomPrice">
+
                                 ${vo.roomPrice}
                         </div>
                     </td>
@@ -155,7 +156,6 @@
                 <input type="text" class="form-control" id="guestCount" name="guestCount">
                 <input type="date" class="form-control" id="checkinDate" name="checkinDate">
                 <input type="date" class="form-control" id="checkoutDate" name="checkoutDate">
-
                 <input type="text" class="form-control" id="paymentAmount" name="paymentAmount">
             </div>
         </form>
