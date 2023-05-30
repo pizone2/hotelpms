@@ -9,6 +9,7 @@ const rtype = document.getElementById("rtype").textContent;
 //파라미터 값으로 넘긴 checkinDate 넣어주기
 const urlParams = new URLSearchParams(window.location.search);
 const checkinDate = urlParams.get('checkinDate');
+document.getElementById("myDiv").style.display = "none";
 
 
 

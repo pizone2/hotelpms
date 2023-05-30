@@ -224,7 +224,6 @@
 
 <!-- Footer Section Begin -->
 <c:import url="../temp/footer.jsp"></c:import>
-<c:import url="../temp/js.jsp"></c:import>
 <!-- Footer Section End -->
 
 <script src="/calendar/js/jquery-3.3.1.min.js"></script>
@@ -234,5 +233,6 @@
 <script src="/calendar/js/main.js"></script>
 <script src="/js/reservationRoom.js"></script>
 <script src="/js/pay.js"></script>
+<c:import url="../temp/js.jsp"></c:import>
 </body>
 </html>
