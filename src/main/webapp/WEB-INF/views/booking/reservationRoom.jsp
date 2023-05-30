@@ -100,7 +100,8 @@
                     <c:forEach items="${room}" var="ro">
                         <c:choose>
                             <c:when test="${vo.roomType eq ro.roomType}">
-                                <td><div class="bookable">예약 가능</div></td>
+                                <td><div class="bookable font-weight-bold text-primary">예약 가능</div></td>
+
                             </c:when>
                             <c:otherwise>
 
@@ -108,6 +109,10 @@
                         </c:choose>
                     </c:forEach>
 
+                    <c:if test="${empty room}">
+                        <td><div class="bookable font-weight-bold text-danger">예약 불가</div></td>
+                        <%-- 예약 가능한 방이 없을 때 --%>
+                    </c:if>
                     <td>
                         <select id="guest">
                             <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
@@ -131,9 +136,14 @@
                                 ${vo.roomPrice}
                         </div>
                     </td>
-                    <td>
-                        <button type="button" id="btn1"  class="btn1">선택</button>
-                    </td>
+                    <c:if test="${not empty room}">
+                        <td>
+                            <button type="button" id="btn1"  class="btn1">선택</button>
+                        </td>
+                    </c:if>
+                    <c:if test="${empty room}">
+                        <td>예약 마감</td>
+                    </c:if>
                 </tr>
             </c:forEach>
             </tbody>
