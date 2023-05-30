@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -41,6 +42,41 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                    <sec:authorize access="isAuthenticated()">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <div class="mt-3">
+                                    <h4><sec:authentication property="principal.id"/></h4>
+                                    <div class="custom-padding" style="background-color: white; padding: 15px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0">NAME</h6>
+                                    <span class="text-secondary"><sec:authentication property="principal.name"/></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0">PHONE</h6>
+                                    <span class="text-secondary"><sec:authentication property="principal.phoneNumber" /></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0">ID</h6>
+                                    <span class="text-secondary"><sec:authentication property="principal.id"/></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <h6 class="mb-0">EMAIL</h6>
+                                    <span class="text-secondary"><sec:authentication property="principal.email" /></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </sec:authorize>
                 </div>
             </div>
         </div>
