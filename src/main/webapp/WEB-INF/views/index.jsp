@@ -15,6 +15,7 @@
 
     <!--css-->
     <c:import url="./temp/style.jsp"></c:import>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
     <!--css-->
 </head>
 
@@ -41,12 +42,12 @@
                         <a href="#" class="primary-btn">${ds}</a>
                     </div>
                 </div>
+                <sec:authorize access="isAuthenticated()">
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-                    <sec:authorize access="isAuthenticated()">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png?w=826&t=st=1685410931~exp=1685411531~hmac=aba334bfa86956cf27ba3e0af2fab07921b71a199210d274bef4d91c7be12a95" alt="Admin" class="rounded-circle p-1 bg-secondary" width="110">
                                 <div class="mt-3">
                                     <h4><sec:authentication property="principal.id"/></h4>
                                     <div class="custom-padding" style="background-color: white; padding: 15px;">
@@ -76,8 +77,14 @@
                             </ul>
                         </div>
                     </div>
-                    </sec:authorize>
                 </div>
+                </sec:authorize>
+                <sec:authorize access="!isAuthenticated()">
+                <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                    <div id="calendar"></div>
+                </div>
+                </sec:authorize>
+
             </div>
         </div>
         <div class="hero-slider owl-carousel">
@@ -88,69 +95,6 @@
     </section>
     <!-- Hero Section End -->
 
-
-
-    <%--<!-- Blog Section Begin -->
-    <section class="blog-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Hotel News</span>
-                        <h2>Our Blog & Event</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/blog-1.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Travel Trip</span>
-                            <h4><a href="#">Tremblant In Canada</a></h4>
-                            <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/blog-2.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Camping</span>
-                            <h4><a href="#">Choosing A Static Caravan</a></h4>
-                            <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/blog-3.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Event</span>
-                            <h4><a href="#">Copper Canyon</a></h4>
-                            <div class="b-time"><i class="icon_clock_alt"></i> 21th April, 2019</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="blog-item small-size set-bg" data-setbg="img/blog/blog-wide.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Event</span>
-                            <h4><a href="#">Trip To Iqaluit In Nunavut A Canadian Arctic City</a></h4>
-                            <div class="b-time"><i class="icon_clock_alt"></i> 08th April, 2019</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item small-size set-bg" data-setbg="img/blog/blog-10.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Travel</span>
-                            <h4><a href="#">Traveling To Barcelona</a></h4>
-                            <div class="b-time"><i class="icon_clock_alt"></i> 12th April, 2019</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Section End -->--%>
     <div class="custom-section">
         <div class="custom-section-content">
             <!-- 새로운 <div> 태그를 추가하고 패딩과 배경색을 적용합니다 -->
@@ -159,9 +103,7 @@
         </div>
     </div>
 
-    <!-- Footer Section Begin -->
-    <c:import url="./temp/footer.jsp"></c:import>
-    <!-- Footer Section End -->
+
 
     <!-- Search model Begin -->
     <div class="search-model">
@@ -173,6 +115,38 @@
         </div>
     </div>
     <!-- Search model end -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek', // 일주일치 보기로 설정
+                slotDuration: '00:30:00', // 슬롯(시간 구간)의 기간 설정
+                slotLabelInterval: '01:00:00', // 슬롯 레이블의 간격 설정
+                slotLabelFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    omitZeroMinute: false,
+                    meridiem: 'short'
+                }, // 슬롯 레이블의 형식 설정
+                nowIndicator: true, // 현재 시간 표시 설정
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek,timeGridDay'
+                }, // 헤더 영역 설정
+                events: [
+                    // 이벤트 데이터 설정
+                    // ...
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+    <!-- Footer Section Begin -->
+    <c:import url="./temp/footer.jsp"></c:import>
+    <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <c:import url="./temp/js.jsp"></c:import>
