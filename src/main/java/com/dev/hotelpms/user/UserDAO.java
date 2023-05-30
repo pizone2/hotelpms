@@ -24,4 +24,6 @@ public interface UserDAO {
     public int saveTempPw(UserVO userVO) throws  Exception;
 
     public int updateUser(UserVO userVO) throws Exception;
+
+    public UserVO checkPw(UserVO userVO) throws Exception;
 }

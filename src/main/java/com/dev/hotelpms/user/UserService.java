@@ -89,5 +89,8 @@ public class UserService implements UserDetailsService {
         return userDAO.updateUser(userVO);
     }
 
+    public UserVO checkPw(UserVO userVO) throws Exception {
+        return userDAO.checkPw(userVO);
+    }
 
 }

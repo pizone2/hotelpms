@@ -42,22 +42,34 @@
                         <div class="loginbox-or">
                             <div class="or-line"></div>
                         </div>
+                        <form id="checkPw" method="post" action="checkPw">
+                            <input type="text" class="form-control" placeholder="현재 비밀번호 입력" name="password" id="oldPwCheck">
+
+
+                            <div class="loginbox-submit">
+                                <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">
+                            </div>
+                        </form>
+
                         <form id="updatePw" method="post" action="updatePw">
-                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id" value="<sec:authentication property="principal.id"/>">
+                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
+<%--                            <div class="loginbox-textbox">--%>
+<%--                                <input type="text" class="form-control" id="oldPw" placeholder="현재 비밀번호">--%>
+<%--                                <span id="oldPwCheckResult"></span>--%>
+<%--                            </div>--%>
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" placeholder="현재 비밀번호" value="<sec:authentication property="principal.password"/>">
+                                <input type="text" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
+                                <span id="pwResult"></span>
                             </div>
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" name="password" placeholder="새 비밀번호">
-                            </div>
-                            <div class="loginbox-textbox">
-                                <input type="text" class="form-control" placeholder="새 비밀번호 확인">
+                                <input type="text" class="form-control" id="pwCheck" placeholder="새 비밀번호 확인">
+                                <span id="pwCheckResult"></span>
                             </div>
                             <div class="loginbox-forgot">
                                 <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
                             </div>
                             <div class="loginbox-submit">
-                                <input type="submit" class="btn btn-primary btn-block" value="Save Password">
+                                <input type="submit" class="btn btn-primary btn-block" id="btn" value="Save Password">
                             </div>
                         </form>
                     </div>
@@ -175,7 +187,7 @@
 </div>
 <!-- Search model end -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41d534ae5dc3fb8670ff2f84bd5cf770"></script>
-
+<script src="/js/userVerif.js"></script>
 <script>
     const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = { //지도를 생성할 때 필요한 기본 옵션
@@ -192,6 +204,13 @@
             channelPublicId: '_zRYLxj', // Replace with your actual KakaoTalk Channel ID
         });
     }
+</script>
+
+
+<script>
+    // Set the password value dynamically using JavaScript
+    let principalPassword = "<sec:authentication property='principal.password'/>";
+    document.getElementById("oldPwCheck").value = principalPassword;
 </script>
 <!-- Js Plugins -->
 <c:import url="../temp/js.jsp"></c:import>

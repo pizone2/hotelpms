@@ -6,11 +6,13 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -142,5 +144,15 @@ public class UserController {
         log.error(userVO.getPassword());
         return mv;
     }
+
+    @PostMapping("checkPw")
+    public ModelAndView checkPw(UserVO userVO)throws Exception {
+        userService.checkPw(userVO.getId());
+        String id = userVO.getId();
+
+    }
+
+
+
 
 }
