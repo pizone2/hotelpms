@@ -40,8 +40,9 @@ var IMP = window.IMP;
 IMP.init("imp83363020");
 
 
+document.getElementById("requestPay").addEventListener("click", function() {
+    var loggedIn = document.getElementById("loggedInValue").value === "true";
 
-function requestPay() {
     if (loggedIn) {
         // 사용자가 로그인되어 있는 경우, requestPay() 함수 실행
         var roomType = document.getElementById('roomType').value;
@@ -113,9 +114,11 @@ function requestPay() {
         );
     } else {
         // 사용자가 로그인되어 있지 않은 경우, 로그인 창 열기
-        alert("로그인 후 이용 가능합니다.")
+        alert("로그인 후 사용할 수 있습니다.");
+        window.location.href = "http://localhost/customer/login";
     }
-}
+
+});
 // function requestPay() {
 //
 //     var roomType = document.getElementById('roomType').value;
