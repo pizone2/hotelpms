@@ -80,72 +80,67 @@
             </div>
 
         </div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 
         <!-- 객실 타입 페이지 -->
-            <table class="table table-hover">
-                <thead>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            <c:forEach items="${type}" var="vo">
                 <tr>
-                    <th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>연관</th><th>이용금액</th><th>구매여부</th>
-                </tr>
-
-                </thead>
-
-                <tbody>
-                <c:forEach items="${type}" var="vo">
-                    <tr>
-                        <td id="rtype">${vo.roomType}</td>
+                    <td id="rtype">${vo.roomType}</td>
 
 
-                        <c:forEach items="${room}" var="ro">
+                    <c:forEach items="${room}" var="ro">
+                        <c:choose>
+                            <c:when test="${vo.roomType eq ro.roomType}">
+                                <td><div class="bookable">예약 가능</div></td>
+                            </c:when>
+                            <c:otherwise>
 
-                          <c:if test="${vo.roomType eq  ro.roomType}">
-                            <td>예약 가능</td>
-                          </c:if>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
 
-                            <c:if test="${vo.roomType ne ro.roomType}">
-                                    <td>예약 완료</td>
-                            </c:if>
-
-
-
-                        </c:forEach>
-                        <td>
-                            <select id="guest">
-                                <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
-                                <option value="2"> 2인 (최대 ${vo.capacity}인) </option>
-                                <option value="3"> 3인 (최대 ${vo.capacity}인) </option>
-                                <option value="4"> 4인 (최대 ${vo.capacity}인) </option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="stayDuration" id="stayDuration">
-                                <option value="1">1박 2일</option>
-                                <option value="2">2박 3일</option>
-                                <option value="3">3박 4일</option>
-                                <option value="4">4박 5일</option>
-                                <option value="5">5박 6일</option>
-                                <option value="6">6박 7일</option>
-                            </select>
-                        </td>
-                        <td>
-                            여기는 일단 비워두고
-                        </td>
-                        <td>
-                            <div id="roomPrice" name="roomPrice">
+                    <td>
+                        <select id="guest">
+                            <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
+                            <option value="2"> 2인 (최대 ${vo.capacity}인) </option>
+                            <option value="3"> 3인 (최대 ${vo.capacity}인) </option>
+                            <option value="4"> 4인 (최대 ${vo.capacity}인) </option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="stayDuration" id="stayDuration">
+                            <option value="1">1박 2일</option>
+                            <option value="2">2박 3일</option>
+                            <option value="3">3박 4일</option>
+                            <option value="4">4박 5일</option>
+                            <option value="5">5박 6일</option>
+                            <option value="6">6박 7일</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
-                            </div>
-                        </td>
-                        <td>
-                            <button type="button" id="btn1"  class="btn1">선택</button>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" id="btn1"  class="btn1">선택</button>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
 
-            </table>
+        </table>
         <form>
-            <div>
+            <div id="myDiv">
                 <input type="text" class="form-control" id="roomType" name="roomType">
                 <input type="text" class="form-control" id="guestCount" name="guestCount">
                 <input type="date" class="form-control" id="checkinDate" name="checkinDate">
@@ -154,90 +149,91 @@
                 <input type="text" class="form-control" id="paymentAmount" name="paymentAmount">
             </div>
         </form>
-</div>
+    </div>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
 
-                    <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                        </div>
+                    </div>
+                    <div class="checkout__form">
                         <div class="row">
-                            <div class="col-lg-12">
-                            </div>
+                            <h3> 약관동의 하기</h3>
                         </div>
-                        <div class="checkout__form">
-                            <div class="row">
-                                <h3> 약관동의 하기</h3>
+                        <h3>&nbsp;</h3>
+
+
+                        <div class="checkout__input">
+
+                            <div style="display: block; width: 100%; text-align: left;">
+                                <input class="form-check-input" type="checkbox" value="" id="check1">
+                                제 1조 (목 적) 개인정보 제 3자 동의
                             </div>
-                            <h3>&nbsp;</h3>
-
-
-                            <div class="checkout__input">
-
-                                <div style="display: block; width: 100%; text-align: left;">
-                                    <input class="form-check-input" type="checkbox" value="" id="check1">
-                                    제 1조 (목 적) 개인정보 제 3자 동의
-                                </div>
-                                <h6>&nbsp;</h6>
-                                <div style="display: block; width: 100%; text-align: left;">
-                                    <input class="form-check-input" type="checkbox" value="" id="check2">
-                                    제 2 조 (용어의 정의) 개인정보취급 동의
-                                </div>
-                                <h6>&nbsp;</h6>
-                                <div style="display: block; width: 100%; text-align: left;">
-                                    <input class="form-check-input" type="checkbox" value="" id="check3">
-                                    제 3 조 (용어의 정의) 개인정보취급 동의
-                                </div>
-
+                            <h6>&nbsp;</h6>
+                            <div style="display: block; width: 100%; text-align: left;">
+                                <input class="form-check-input" type="checkbox" value="" id="check2">
+                                제 2 조 (용어의 정의) 개인정보취급 동의
+                            </div>
+                            <h6>&nbsp;</h6>
+                            <div style="display: block; width: 100%; text-align: left;">
+                                <input class="form-check-input" type="checkbox" value="" id="check3">
+                                제 3 조 (용어의 정의) 개인정보취급 동의
                             </div>
 
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
-                <div class="col-lg-6" style=" text-align: left;">
-                    <h3 style=" text-align: left;">예약 결제금액</h3>
-                    <br>
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>총계</th>
-                            <td id="paymentAmount1">원</td>
-                        </tr>
-                        <tr>
-                            <th>할인요금</th>
-                            <td>- 0원</td>
-                        </tr>
-                        <tr>
-                            <th>총 결제금액</th>
-                            <td id="paymentAmount2">원</td>
-                        </tr>
+            </div>
 
-                    </table>
+            <div class="col-lg-6" style=" text-align: left;">
+                <h3 style=" text-align: left;">예약 결제금액</h3>
+                <br>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>총계</th>
+                        <td id="paymentAmount1">원</td>
+                    </tr>
+                    <tr>
+                        <th>할인요금</th>
+                        <td>- 0원</td>
+                    </tr>
+                    <tr>
+                        <th>총 결제금액</th>
+                        <td id="paymentAmount2">원</td>
+                    </tr>
 
-                    <div style="display: flex; justify-content: center;">
-                        <button id="requestPay" class="btn btn-primary" style="margin-right: 10px;">결제하기</button>
-                        <button class="btn btn-secondary" style="margin-left: 10px;">취소</button>
-                    </div>
-                    <h3>&nbsp;</h3><h3>&nbsp;</h3>
+                </table>
+
+                <div style="display: flex; justify-content: center;">
+                    <button id="requestPay" class="btn btn-primary" style="margin-right: 10px;">결제하기</button>
+                    <button class="btn btn-secondary" style="margin-left: 10px;">취소</button>
                 </div>
+                <h3>&nbsp;</h3><h3>&nbsp;</h3>
             </div>
         </div>
+    </div>
 
 
 
 
-<!-- Footer Section Begin -->
-<c:import url="../temp/footer.jsp"></c:import>
-<!-- Footer Section End -->
+    <!-- Footer Section Begin -->
+    <c:import url="../temp/footer.jsp"></c:import>
+    <!-- Footer Section End -->
 
-<script src="/calendar/js/jquery-3.3.1.min.js"></script>
-<script src="/calendar/js/popper.min.js"></script>
-<script src="/calendar/js/bootstrap.min.js"></script>
-<script src="/calendar/js/rome.js"></script>
-<script src="/calendar/js/main.js"></script>
-<script src="/js/reservationRoom.js"></script>
-<script src="/js/pay.js"></script>
+    <script src="/calendar/js/jquery-3.3.1.min.js"></script>
+    <script src="/calendar/js/popper.min.js"></script>
+    <script src="/calendar/js/bootstrap.min.js"></script>
+    <script src="/calendar/js/rome.js"></script>
+    <script src="/calendar/js/main.js"></script>
+    <script src="/js/reservationRoom.js"></script>
+    <script src="/js/pay.js"></script>
+    <c:import url="../temp/js.jsp"></c:import>
 </body>
 </html>
