@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -62,29 +64,36 @@
                                 </div>
                             </div>
                             <hr class="my-4">
+                            <c:if test="${empty payVO}">
                             <p class="text-secondary mb-1 text-center" style="padding: 50px;">객실 예약 정보가 없습니다</p>
-                                <%-- <ul class="list-group list-group-flush">
+                            </c:if>
+                            <c:if test="${not empty payVO}">
+                                 <ul class="list-group list-group-flush">
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                         <h6 class="mb-0">NAME</h6>
-                                         <span class="text-secondary"><sec:authentication property="principal.name"/></span>
+                                         <h6 class="mb-0">룸타입</h6>
+                                         <span class="text-secondary">${payVO.roomType}룸</span>
                                      </li>
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                         <h6 class="mb-0">PHONE</h6>
-                                         <span class="text-secondary"><sec:authentication property="principal.phoneNumber" /></span>
+                                         <h6 class="mb-0">룸번호</h6>
+                                         <span class="text-secondary">${payVO.roomNumber}호</span>
                                      </li>
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                         <h6 class="mb-0">ID</h6>
-                                         <span class="text-secondary"><sec:authentication property="principal.id"/></span>
+                                         <h6 class="mb-0">기간</h6>
+                                         <c:set var="stayDuration" value="${(timeDiff / (1000 * 3600 * 24)) + 1}" />
+                                         <c:set var="stayDescription" value="${fn:substringBefore(stayDuration, '.')}박 ${fn:substringBefore(stayDuration + 1, '.')}일" />
+                                         <span class="text-secondary">${stayDescription}</span>
                                      </li>
+<%--                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--%>
+<%--                                         <h6 class="mb-0">EMAIL</h6>--%>
+<%--                                         <span class="text-secondary"><sec:authentication property="principal.email" /></span>--%>
+<%--                                     </li>--%>
+                                     <button class="btn btn-primary" style="margin-right: 10px;">나의 예약내역 보기</button>
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                         <h6 class="mb-0">EMAIL</h6>
-                                         <span class="text-secondary"><sec:authentication property="principal.email" /></span>
                                      </li>
-                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                     </li>
-                                 </ul>--%>
-                             </div>
-                         </div>
+                                 </ul>
+                            </c:if>
+                        </div>
+                    </div>
 
                 </div>
                 </sec:authorize>

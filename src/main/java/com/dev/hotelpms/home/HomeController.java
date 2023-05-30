@@ -1,8 +1,12 @@
 package com.dev.hotelpms.home;
 
+import com.dev.hotelpms.pay.PayService;
+import com.dev.hotelpms.pay.PayVO;
 import com.dev.hotelpms.room.BookingService;
 import com.dev.hotelpms.room.ReservedVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +17,8 @@ import java.util.List;
 public class HomeController {
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private PayService payService;
 
     @GetMapping("/")
     public ModelAndView home() throws Exception{
@@ -29,6 +35,9 @@ public class HomeController {
         mv.addObject("twinList",voSuccessList);
         List<ReservedVO> voPossibleList=  bookingService.getPossibleReserve();
         mv.addObject("possibleList",voPossibleList);
+        PayVO payVO = new PayVO();
+        payVO =  payService.getPayDetail(payVO);
+        mv.addObject("payVO",payVO);
         mv.setViewName("index");
         return mv;
     }
