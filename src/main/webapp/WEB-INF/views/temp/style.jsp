@@ -15,6 +15,5 @@
 <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
 <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/css/style.css" type="text/css">
-<link rel="stylesheet" href="resources/css/plugin/datepicker/bootstrap-datepicker.css">
 <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
 <link rel="stylesheet" href="/calendar/css/rome.css">
