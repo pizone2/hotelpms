@@ -87,14 +87,14 @@
             </div>
 
         </div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block">
+        </div>
         <!-- 객실 타입 페이지 -->
         <div class="my-5">
-        <table class="table table-hover bg-white">
-            <thead class="text-center">
+        <table class="table table-hover bg-white text-center">
+            <thead>
             <tr>
-                <th>객실 이미지</th>  <th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
+                <th>객실 이미지</th><th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
             </tr>
             </thead>
 
@@ -116,11 +116,12 @@
                     <c:if test="${vo.roomType eq '스탠다드'}">
                         <td><img alt="스탠다드" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDFfMjU2%2FMDAxNjI3ODI0OTgzODUx.5Uxcbh7riac8DDnRcUyDGgiWjSpOXyN8ea7s2CtBg6kg.bxdekaTjaIL8WiXLoVzba6WS3fj0rEAKem1YewlSgucg.JPEG.yuga14%2FIMG_1629.jpg&type=sc960_832" class="img-thumbnail"></td>
                     </c:if>
-                    <td id="rtype">${vo.roomType}</td>
+                    <td id="rtype" style="vertical-align: middle; text-align: center; font-size: 25px;">${vo.roomType}</td>
+
                     <c:forEach items="${room}" var="ro">
                         <c:choose>
                             <c:when test="${vo.roomType eq ro.roomType}">
-                                <td><div class="bookable font-weight-bold text-primary">예약 가능</div></td>
+                                <td style="vertical-align: middle; text-align: center;"><div class="bookable font-weight-bold text-warning fw-bold font-monospace" >예약 가능</div></td>
                             </c:when>
                             <c:otherwise>
                             </c:otherwise>
@@ -134,29 +135,32 @@
                         </c:if>
                     </c:forEach>
                     <c:if test="${count == 0}">
-                        <td><div class="bookable font-weight-bold text-danger">예약불가</div></td>
+                        <td style="vertical-align: middle; text-align: center;"><div class="bookable font-weight-bold text-danger fw-bold font-monospace">예약불가</div></td>
                     </c:if>
                         <%--예약 가능한 내역이 0개라면 예약 불가 처리 끝 --%>
-
-                    <td style="text-align: center !important;">
-                        <select id="guest">
-                            <option value="1"> 1인 (최대 ${vo.capacity}인) </option>
-                            <option value="2"> 2인 (최대 ${vo.capacity}인) </option>
-                            <option value="3"> 3인 (최대 ${vo.capacity}인) </option>
-                            <option value="4"> 4인 (최대 ${vo.capacity}인) </option>
-                        </select>
+                    <td style="vertical-align: middle; text-align: center;">
+                        <div style="display: inline-block;">
+                            <select id="guest">
+                                <option value="1" ${vo.capacity >= 1 ? '' : 'disabled'}> 1인 (최대 ${vo.capacity}인) </option>
+                                <option value="2" ${vo.capacity >= 2 ? '' : 'disabled'}> 2인 (최대 ${vo.capacity}인) </option>
+                                <option value="3" ${vo.capacity >= 3 ? '' : 'disabled'}> 3인 (최대 ${vo.capacity}인) </option>
+                                <option value="4" ${vo.capacity >= 4 ? '' : 'disabled'}> 4인 (최대 ${vo.capacity}인) </option>
+                            </select>
+                        </div>
                     </td>
-                    <td class="text-center">
-                        <select name="stayDuration" id="stayDuration" style="width: 390px;">
-                            <option value="1">1박 2일</option>
-                            <option value="2">2박 3일</option>
-                            <option value="3">3박 4일</option>
-                            <option value="4">4박 5일</option>
-                            <option value="5">5박 6일</option>
-                            <option value="6">6박 7일</option>
-                        </select>
+                    <td style="vertical-align: middle; text-align: center;">
+                        <div style="display: inline-block;">
+                            <select name="stayDuration" id="stayDuration" style="display: block; margin: 0 auto;">
+                                <option value="1">1박 2일</option>
+                                <option value="2">2박 3일</option>
+                                <option value="3">3박 4일</option>
+                                <option value="4">4박 5일</option>
+                                <option value="5">5박 6일</option>
+                                <option value="6">6박 7일</option>
+                            </select>
+                        </div>
                     </td>
-                    <td>
+                    <td style="vertical-align: middle; text-align: center;">
                         <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
                         </div>
@@ -169,8 +173,8 @@
                     </c:forEach>
 
                     <c:if test="${count > 0}">
-                        <td>
-                            <button type="button" class="btn1 btn-light btn-outline-success"> 선택 </button>
+                        <td style="vertical-align: middle; text-align: center;">
+                            <button type="button" class="btn1 btn-outline-warning rounded-pill btn-lg" style="background-color: white;">선택</button>
                         </td>
                     </c:if>
 
@@ -267,7 +271,7 @@
                     %>
                     <input type="hidden" id="loggedInValue" value="<%= loggedIn %>">
 
-                    <button id="requestPay" class="btn btn-primary" style="margin-right: 10px;">결제하기</button>
+                    <button id="requestPay" class="btn btn-warning" style="margin-right: 10px;">결제하기</button>
 
                     <button class="btn btn-secondary" style="margin-left: 10px;">취소</button>
                 </div>

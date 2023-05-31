@@ -9,7 +9,12 @@ const rtype = document.getElementById("rtype").textContent;
 //파라미터 값으로 넘긴 checkinDate 넣어주기
 const urlParams = new URLSearchParams(window.location.search);
 const checkinDate = urlParams.get('checkinDate');
-//오늘 날짜 구하는 함수
+//오늘 달력 날짜를 구하는 함수
+let todaydate = new Date();
+let todaydatey = todaydate.getFullYear();
+let todaydatem = todaydate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해주기
+let todaydated = todaydate.getDate();
+//////////////////////////////////
 let today = new Date(checkinDate);
 let day = String(today.getDate()).padStart(2, '0');
 document.getElementById("myDiv").style.display = "none";
@@ -95,13 +100,22 @@ $(document).on('dblclick', '.rd-day-body.rd-day-selected', function() {
         monthNumber = (new Date(`${month} 1, 2000`).getMonth() + 1).toString().padStart(2, '0');
     });
 
+
     const numericValue = parseInt($(this).text());
     const formattedValue = numericValue.toString().padStart(2, '0');
     const formattedDate = `${year}-${monthNumber}-${formattedValue}`;
+    const  compareDate =`${todaydatey}-${todaydatem}-${todaydated}`;
 
-    var url = 'http://localhost/booking/reservationRoom?checkinDate=' + formattedDate; // Enter the URL to jump to here.
+    let url = 'http://localhost/booking/reservationRoom?checkinDate=' + formattedDate;
 
-    window.location.href = url;
+    if (new Date(formattedDate) >= new Date(compareDate)) {
+        // formattedDate가 compareDate보다 이후일 때 실행되는 코드
+        window.location.href = url;
+
+    }
+
+
+
 
 });
 $(function() {
