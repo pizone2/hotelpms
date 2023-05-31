@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -56,7 +57,8 @@
         `<div class="row justify-content-center">
             <div class="col-lg-7 offset-lg-1">
                 <div class="text-center">
-                    <h1 class="h1 text-gray-900 mb-4">Create an Account!</h1>
+                    <spring:message code="join" var="jo" text=""/>
+                    <h1 class="h1 text-gray-900 mb-4">${jo}</h1>
                 </div>
                 <form:form action="./join" cssClass="contact1-form" modelAttribute="userVO">
                     <div class="row">
