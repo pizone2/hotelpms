@@ -60,11 +60,11 @@
 <%--                            </div>--%>
                             <div class="loginbox-textbox">
                                 <input type="text" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
-                                <span id="pwResult"></span>
+                                <span id="pwResult" style="color: red;"></span>
                             </div>
                             <div class="loginbox-textbox">
                                 <input type="text" class="form-control" id="pwCheck" placeholder="새 비밀번호 확인">
-                                <span id="pwCheckResult"></span>
+                                <span id="pwCheckResult" style="color: red;"></span>
                             </div>
                             <div class="loginbox-forgot">
                                 <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
