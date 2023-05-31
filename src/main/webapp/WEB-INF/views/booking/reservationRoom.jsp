@@ -13,16 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-
-
     <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
-
     <link rel="stylesheet" href="/calendar/css/rome.css">
-
-
     <!--css-->
     <c:import url="../temp/style.jsp"></c:import>
-
     <!-- Style -->
     <link rel="stylesheet" href="/calendar/css/style.css">
     <!-- jQuery -->
@@ -73,14 +67,10 @@
                             <p class="lead"><strong>  가장 빠른 객실에약 </strong></p>
                         </div>
                         <input type="text" class="form-control w-25 mx-auto mb-3" id="result" placeholder="Select date" disabled="">
-
-
                         <form action="#" class="row">
                             <div class="col-md-12">
                                 <div id="inline_cal"></div>
-
                             </div>
-
                         </form>
                     </div>
                     <div class="col-md-12 mt-5">
@@ -104,7 +94,7 @@
         <table class="table table-hover bg-white">
             <thead class="text-center">
             <tr>
-                <th></th>  <th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
+                <th>객실 이미지</th>  <th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
             </tr>
             </thead>
 
@@ -126,10 +116,7 @@
                     <c:if test="${vo.roomType eq '스탠다드'}">
                         <td><img alt="스탠다드" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDFfMjU2%2FMDAxNjI3ODI0OTgzODUx.5Uxcbh7riac8DDnRcUyDGgiWjSpOXyN8ea7s2CtBg6kg.bxdekaTjaIL8WiXLoVzba6WS3fj0rEAKem1YewlSgucg.JPEG.yuga14%2FIMG_1629.jpg&type=sc960_832" class="img-thumbnail"></td>
                     </c:if>
-
-
                     <td id="rtype">${vo.roomType}</td>
-
                     <c:forEach items="${room}" var="ro">
                         <c:choose>
                             <c:when test="${vo.roomType eq ro.roomType}">
