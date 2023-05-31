@@ -74,13 +74,13 @@ $(".btn1").on("click", function() {
     $("#paymentAmount1").text(f+'원');
     $("#paymentAmount2").text(f+'원');
     // //객실타입
-     $("#roomType").val(rtype);
+    $("#roomType").val(rtype);
     // //체크인 날짜
-     $("#checkinDate").val(d);
+    $("#checkinDate").val(d);
     //체크아웃날짜
-     $("#checkoutDate").val(formattedDate);
+    $("#checkoutDate").val(formattedDate);
     // //인원수 삽입
-     $("#guestCount").val(guestCount);
+    $("#guestCount").val(guestCount);
 
 
 
