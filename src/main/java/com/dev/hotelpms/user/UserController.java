@@ -145,12 +145,14 @@ public class UserController {
         return mv;
     }
 
-    @PostMapping("checkPw")
-    public ModelAndView checkPw(UserVO userVO)throws Exception {
-        userService.checkPw(userVO.getId());
-        String id = userVO.getId();
-
-    }
+//    @PostMapping("checkPw")
+//    public String checkPw(String id)throws Exception {
+//        String userId = id;
+//        UserVO userVO = userService.checkPw(userId);
+//
+//
+//        return mv;
+//    }
 
 
 

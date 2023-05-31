@@ -29,7 +29,7 @@
 		WHERE ID = #{id}
 	</select>
 
-	<select id="checkPw" resultType="UserVO" parameterType="UserVO">
+	<select id="checkPw" resultType="UserVO" parameterType="String">
 		SELECT PASSWORD
 		FROM USER
 		WHERE ID = #{id}

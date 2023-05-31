@@ -47,6 +47,7 @@
 
 
                             <div class="loginbox-submit">
+                                <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
                                 <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">
                             </div>
                         </form>
