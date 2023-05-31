@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -14,6 +15,7 @@
 
     <!--css-->
     <c:import url="../temp/style.jsp"></c:import>
+    <link rel="stylesheet" href="/css/myPageModal.css" >
     <!--css-->
 </head>
 
@@ -22,56 +24,71 @@
 <!-- Header Section Begin -->
 <c:import url="../temp/header.jsp"></c:import>
 <!-- Header End -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-<%--<!-- Contact Section Begin -->--%>
-<%--<section class="contact-section spad">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-4">--%>
-<%--                <div class="contact-text">--%>
-<%--                    <h2>MyPage</h2>--%>
-<%--                    <p><sec:authentication property="principal.name"/>고객님 환영합니다. </p>--%>
+<!-- 패스워드 변경 모달창 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="login-container animated fadeInDown bootstrap snippets bootdeys">
+                    <div class="loginbox bg-white">
+                        <div class="loginbox-title">Change Password</div>
+
+                        <div class="loginbox-or">
+                            <div class="or-line"></div>
+                        </div>
+<%--                        <form id="checkPw" method="post" action="checkPw">--%>
+<%--                            <input type="text" class="form-control" placeholder="현재 비밀번호 입력" name="password" id="oldPwCheck">--%>
 
 
-<%--                    <table>--%>
-<%--                        <tbody>--%>
-<%--                        <tr>--%>
-<%--                            <td class="c-o">name:</td>--%>
-<%--                            <td><sec:authentication property="principal.name"/></td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td class="c-o">id:</td>--%>
-<%--                            <td><sec:authentication property="principal.id"/></td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td class="c-o">Phone:</td>--%>
-<%--                            <td><sec:authentication property="principal.phoneNumber" /></td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td class="c-o">Email:</td>--%>
-<%--                            <td><sec:authentication property="principal.email" /></td>--%>
-<%--                        </tr>--%>
-<%--                        </tbody>--%>
-<%--                    </table>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-7 offset-lg-1">--%>
-<%--                    <div class="row">--%>
-<%--                        <div class="col-lg-6 contact-form">--%>
-<%--                            <h3>비밀번호 변경</h3>--%>
-<%--                            <input type="text" placeholder="비밀번호를 입력해 주세요 ">--%>
-<%--                            <input type="text" placeholder="새 비밀번호 확인 ">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                <div class="row">--%>
-<%--                    <div class="col-lg-6 contact-form">--%>
-<%--                        <h3>회원정보 변경</h3>--%>
-<%--                        <input type="text" placeholder="비밀번호를 입력해 주세요 ">--%>
-<%--                        <input type="text" placeholder="새 비밀번호 확인 ">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+<%--                            <div class="loginbox-submit">--%>
+<%--                                <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">--%>
+<%--                                <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">--%>
+<%--                            </div>--%>
+<%--                        </form>--%>
+
+                        <form id="updatePw" method="post" action="updatePw">
+                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
+<%--                            <div class="loginbox-textbox">--%>
+<%--                                <input type="text" class="form-control" id="oldPw" placeholder="현재 비밀번호">--%>
+<%--                                <span id="oldPwCheckResult"></span>--%>
+<%--                            </div>--%>
+                            <div class="loginbox-textbox">
+                                <input type="text" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
+                                <span id="pwResult"></span>
+                            </div>
+                            <div class="loginbox-textbox">
+                                <input type="text" class="form-control" id="pwCheck" placeholder="새 비밀번호 확인">
+                                <span id="pwCheckResult"></span>
+                            </div>
+                            <div class="loginbox-forgot">
+                                <a href="../customer/findIdPw">ID를 잊으셨습니까?</a>
+                            </div>
+                            <div class="loginbox-submit">
+                                <input type="submit" class="btn btn-primary btn-block" id="btn" value="Save Password">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="logobox">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <%--&lt;%&ndash;        <div id="map" style="width:500px;height:400px;"></div>&ndash;%&gt;--%>
 
@@ -89,7 +106,7 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://post-phinf.pstatic.net/MjAyMTA0MTlfMjg1/MDAxNjE4ODM2MDI2NzUz.GL3g5z-ifZjmrN62JOnwinaZQP_Y8P4s-7L3FXv4rlEg.Nv9ZhvDIr1pj_lLyfuvIpiwDRn3b40JLx-TPKHMwKlkg.JPEG/IMG_2448.jpg?type=w1200"><span class="font-weight-bold"><sec:authentication property="principal.name"/></span><span class="text-black-50"><sec:authentication property="principal.email" /></span><span> </span>
-                <button id="changePasswordBtn" class="btn btn-primary profile-button  mt-3">Change Password</button>
+                <button id="changePasswordBtn" class="btn btn-primary profile-button  mt-3" data-toggle="modal" data-target="#myModal">Change Password</button>
             </div>
         </div>
         <div class="col-md-5 border-right">
@@ -97,15 +114,31 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
+                <form id="updateUserForm" method="post" action="userUpdate">
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="<sec:authentication property="principal.name"/>"></div>
+                    <div class="col-md-6">
+                        <label class="labels">Name</label>
+                        <input type="text" class="form-control" placeholder="first name" name="name"  value="<sec:authentication property="principal.name"/>">
+                    </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" placeholder="enter phone number" value="<sec:authentication property="principal.phoneNumber" />"></div>
-                    <div class="col-md-12"><label class="labels">ID</label><input type="text" class="form-control" placeholder="enter address line 1" value="<sec:authentication property="principal.id"/>"></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="enter address line 2" value="<sec:authentication property="principal.email" />"></div>
+                    <div class="col-md-12">
+                        <label class="labels">Phone</label>
+                        <input type="text" class="form-control" placeholder="enter phone number" name="phoneNumber" value="<sec:authentication property="principal.phoneNumber" />">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">ID</label>
+                        <input type="text" class="form-control" placeholder="enter address line 1" readonly name="id" value="<sec:authentication property="principal.id"/>">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">Email</label>
+                        <input type="email" class="form-control" placeholder="enter address line 2" name="email" value="<sec:authentication property="principal.email" />">
+                    </div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center">
+                    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                </div>
+            </form>
             </div>
         </div>
         <div class="col-md-4">
@@ -114,6 +147,7 @@
 
                 <p>안녕하세요 <sec:authentication property="principal.name"/>고객님 방문해 주셔서 감사합니다. <br>귀하의 문의에 신속하게 답변드리겠습니다.</p>
                 <p>1:1 문의는 평일 오후 5시까지 (주말, 공휴일은 휴무) <br>접수된 문의만 당일 답변드리고 있습니다. 근무시간 외에 질문을 주신 경우 다음 영업일 근무시간에 순차적으로 답변해드립니다.</p>
+
             </div>
         </div>
     </div>
@@ -154,7 +188,7 @@
 </div>
 <!-- Search model end -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41d534ae5dc3fb8670ff2f84bd5cf770"></script>
-
+<script src="/js/userVerif.js"></script>
 <script>
     const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = { //지도를 생성할 때 필요한 기본 옵션
@@ -172,10 +206,16 @@
         });
     }
 </script>
+
+
+<script>
+    // Set the password value dynamically using JavaScript
+    let principalPassword = "<sec:authentication property='principal.password'/>";
+    document.getElementById("oldPwCheck").value = principalPassword;
+</script>
 <!-- Js Plugins -->
 <c:import url="../temp/js.jsp"></c:import>
 </body>
 
 </html>
 
-//깃 테스트3
