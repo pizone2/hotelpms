@@ -49,7 +49,7 @@ $(document).ready(function() {
         })
 
 
-    $(document).on("click", ".back_btn", function() {
-        location.href = "/login";
-    })
+    // $(document).on("click", ".back_btn", function() {
+    //     location.href = "/login";
+    // })
 })

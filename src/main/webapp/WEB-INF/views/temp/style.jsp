@@ -2,7 +2,7 @@
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
-<%--<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">--%>
+<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -15,6 +15,5 @@
 <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
 <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="/css/style.css" type="text/css">
-<%--<link rel="stylesheet" href="/resources/css/plugin/datepicker/bootstrap-datepicker.css">--%>
 <link rel="stylesheet" href="/calendar/fonts/icomoon/style.css">
 <link rel="stylesheet" href="/calendar/css/rome.css">
