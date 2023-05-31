@@ -29,9 +29,21 @@
 		WHERE ID = #{id}
 	</select>
 
+	<select id="checkPw" resultType="UserVO" parameterType="String">
+		SELECT PASSWORD
+		FROM USER
+		WHERE ID = #{id}
+	</select>
+
 	<update id="saveTempPw" parameterType="UserVO">
 		UPDATE USER
 		SET PASSWORD = #{password}
+		WHERE ID = #{id}
+	</update>
+
+	<update id="updateUser" parameterType="UserVO">
+		UPDATE USER
+		SET phoneNumber = #{phoneNumber}, name = #{name}, email = #{email}
 		WHERE ID = #{id}
 	</update>
 
