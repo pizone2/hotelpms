@@ -14,6 +14,10 @@
     <!--css-->
     <c:import url="../temp/style.jsp"></c:import>
     <!--css-->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -100,6 +104,8 @@
         <br>
         <br>
 
+        <button onclick="cancelPay()">환불하기</button>
+
 
 
     </div>
@@ -122,6 +128,7 @@
 <!-- Js Plugins -->
 <c:import url="../temp/js.jsp"></c:import>
 
+<script src="/js/pay.js"></script>
 </body>
 
 </html>

@@ -221,7 +221,7 @@
                 </div>
 
             </div>
-
+            <input type="hidden" id="discountRate" value="<c:out value="${discountRate}" />">
             <div class="col-lg-6" style=" text-align: left;">
                 <h3 style=" text-align: left;">예약 결제금액</h3>
                 <br>
@@ -232,7 +232,7 @@
                     </tr>
                     <tr>
                         <th>할인요금</th>
-                        <td>- 0원</td>
+                        <td id="discount">원</td>
                     </tr>
                     <tr>
                         <th>총 결제금액</th>

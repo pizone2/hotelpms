@@ -44,15 +44,21 @@ public class BookingController {
     public ModelAndView getBookingRoom(BookingVO bookingVO,RoomTypeVO roomTypeVO) throws Exception {
         ModelAndView mv = new ModelAndView();
 
+        int bookingCheck = 0;
+        bookingCheck = bookingService.getBookingCheck(bookingVO);
+
+        // 예약 기록이 있는 경우 할인율을 10으로 설정하고, 없는 경우 0으로 설정합니다
+        int discountRate = (bookingCheck == 0) ? 10 : 0;
+
         List<RoomTypeVO> ar = bookingService.getRoomTypeList(roomTypeVO);
         List<BookingVO> ar2 = bookingService.getReserved(bookingVO);
 
-
         mv.addObject("type",ar);
         mv.addObject("room",ar2);
+        mv.addObject("discountRate", discountRate); // 할인율 값을 JSP로 전달합니다
 
+        System.out.println(discountRate);
         mv.setViewName("booking/reservationRoom");
-
         return mv;
     }
 

@@ -70,10 +70,25 @@ $(".btn1").on("click", function() {
     console.log("숙박 기간:", stayDuration);
     console.log("객실 가격:", roomPrice);
 
+    //할인율
+    let discountRateElement = document.getElementById('discountRate');
+    let discountRate = parseInt(discountRateElement.value);
+    let calculatedF;
+    if (discountRate !== 0) {
+        calculatedF = f / discountRate;
+    } else {
+        // discountRate가 0인 경우에 대한 처리를 수행합니다.
+        // 예를 들어, 0으로 나누는 경우에는 0이나 다른 값을 할당할 수 있습니다.
+        calculatedF = 0;
+    }
+
+
+
     // //총합계금액 삽입해주기
      $("#paymentAmount").val(f);
-    $("#paymentAmount1").text(f+'원');
-    $("#paymentAmount2").text(f+'원');
+     $("#paymentAmount1").text(f+'원');
+     $("#discount").text('-'+calculatedF+'원');
+     $("#paymentAmount2").text(f-calculatedF+'원');
     // //객실타입
      $("#roomType").val(rtype);
     // //체크인 날짜

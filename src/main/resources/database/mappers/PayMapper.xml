@@ -14,7 +14,7 @@
 
     <insert id="setPayAdd" parameterType="PayVO">
         INSERT INTO BOOKING
-        SELECT NULL, R.ROOMNUMBER, #{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber}
+        SELECT #{reservationNumber}, R.ROOMNUMBER, #{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber}
         FROM (
         SELECT ROOMNUMBER
         FROM ROOM
