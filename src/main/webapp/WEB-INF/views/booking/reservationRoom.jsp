@@ -31,6 +31,13 @@
     ></script>
 
 
+    //구글 폰트 적용하기
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&family=Noto+Sans+KR&display=swap');
+    </style>
+
+
+
     <title>Calendar #7 (inline)</title>
 </head>
 <body>
