@@ -22,4 +22,7 @@ public interface UserDAO {
     public UserVO findEmail(String id) throws  Exception;
 
     public int saveTempPw(UserVO userVO) throws  Exception;
+
+    //이메일 중복체크
+    public UserVO emailDuplicateCheck(UserVO userVO) throws Exception;
 }

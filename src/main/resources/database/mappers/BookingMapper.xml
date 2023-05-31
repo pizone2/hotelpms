@@ -3,7 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.hotelpms.room.BookingDAO">
+    <select id="getSucessReserve" parameterType="String" resultType="ReservedVO">
+        <!-- RESERVED LIST 뽑기
+         예약완료된 날짜
+         빨간색-->
+        SELECT RESERVATIONDATE, COUNT(*) AS COUNT, ROOMTYPE
+        FROM RESERVED
+        WHERE ROOMRESSTATUS = '예약완료' AND ROOMTYPE = #{roomType}
+        AND RESERVATIONDATE >= CURDATE()
+        AND RESERVATIONDATE NOT IN (
+        SELECT RESERVATIONDATE
+        FROM RESERVED
+        WHERE ROOMRESSTATUS = '예약가능' AND ROOMTYPE = #{roomType}
+        )
+        GROUP BY RESERVATIONDATE
+        ORDER BY RESERVATIONDATE;
 
+    </select>
+
+    <select id="getPossibleReserve" resultType="ReservedVO">
+        <!--RESERVED LIST 뽑기
+        예약가능한 날짜
+        파란색-->
+        SELECT RESERVATIONDATE, COUNT(*) AS COUNT, ROOMTYPE
+        FROM RESERVED
+        WHERE ROOMRESSTATUS = '예약가능' AND ROOMTYPE IN ('더블', '디럭스', '스위트', '스탠다드', '트윈')
+        AND RESERVATIONDATE >= CURDATE()
+        GROUP BY RESERVATIONDATE, ROOMTYPE
+        ORDER BY RESERVATIONDATE;
+
+
+    </select>
 
     <resultMap type="RoomVO" id="prod">
         <!--Primary Key  -->
@@ -24,7 +54,14 @@
         <!-- 1:1 관계일 때 -->
         <!--<association property="" javaType="">-->
     </resultMap>
+    <select id="getRoomTypeList" resultType="RoomTypeVO">
+        SELECT * FROM ROOMTYPE
+    </select>
 
+    <select id="getReserved"  parameterType="BookingVO"  resultType="ReservedVO">
+        SELECT DISTINCT(ROOMTYPE) FROM RESERVED
+        WHERE ROOMRESSTATUS= '예약가능' AND RESERVATIONDATE = #{checkinDate}
+    </select>
 
 
 </mapper>
