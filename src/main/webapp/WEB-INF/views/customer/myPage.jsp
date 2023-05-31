@@ -53,7 +53,7 @@
 <%--                        </form>--%>
 
                         <form id="updatePw" method="post" action="updatePw">
-                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
+                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id" value="<sec:authentication property="principal.id"/>">
 <%--                            <div class="loginbox-textbox">--%>
 <%--                                <input type="text" class="form-control" id="oldPw" placeholder="현재 비밀번호">--%>
 <%--                                <span id="oldPwCheckResult"></span>--%>
