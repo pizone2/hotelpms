@@ -3,8 +3,27 @@ const pwResult = document.getElementById("pwResult");
 const btn = document.getElementById("btn");
 const pwCheck = document.getElementById("pwCheck");
 const pwCheckResult = document.getElementById("pwCheckResult");
+const btn2 = document.getElementById("btn2");
+const phoneCheckResult = document.getElementById("phoneCheckResult");
+const phone = document.getElementById("phone");
 
 let checks = [false,false,false];
+let checks2 = [false];
+
+//전화번호 검증
+phone.addEventListener("keyup", function (){
+   if(phone.value.length==11) {
+       phoneCheckResult.innerHTML = '유효한 전화번호'
+       checks2[0] = true;
+   }else {
+       phoneCheckResult.innerHTML = '유효한 전화번호를 입력해 주세요'
+       checks2[0] = false;
+   }
+
+
+});
+
+
 
 //PW 검증
 pw.addEventListener("keyup", function(){
@@ -55,3 +74,16 @@ btn.addEventListener("click", function(){
         event.preventDefault()
     }
 });
+
+btn2.addEventListener("click",function (){
+
+    if(!checks2.includes(false)){
+        alert("사용자 정보를 업데이트 합니다. 재 로그인 해주세요");
+    }else {
+        alert("올바른 값을 입력해 주세요")
+        event.preventDefault()
+    }
+
+});
+
+

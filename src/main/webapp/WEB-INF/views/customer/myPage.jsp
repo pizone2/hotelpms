@@ -59,11 +59,11 @@
 <%--                                <span id="oldPwCheckResult"></span>--%>
 <%--                            </div>--%>
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
+                                <input type="password" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
                                 <span id="pwResult" style="color: red;"></span>
                             </div>
                             <div class="loginbox-textbox">
-                                <input type="text" class="form-control" id="pwCheck" placeholder="새 비밀번호 확인">
+                                <input type="password" class="form-control" id="pwCheck" placeholder="새 비밀번호 확인">
                                 <span id="pwCheckResult" style="color: red;"></span>
                             </div>
                             <div class="loginbox-forgot">
@@ -124,7 +124,8 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label class="labels">Phone</label>
-                        <input type="text" class="form-control" placeholder="enter phone number" name="phoneNumber" value="<sec:authentication property="principal.phoneNumber" />">
+                        <input type="text" class="form-control" placeholder="enter phone number" name="phoneNumber" id="phone" value="<sec:authentication property="principal.phoneNumber" />">
+                        <span id="phoneCheckResult" style="color: red;"></span>
                     </div>
                     <div class="col-md-12">
                         <label class="labels">ID</label>
@@ -136,7 +137,7 @@
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                    <button class="btn btn-primary profile-button" id="btn2" type="submit">Save Profile</button>
                 </div>
             </form>
             </div>
@@ -146,7 +147,7 @@
                 <div class="d-flex justify-content-between align-items-center experience"><span>1:1 문의하기</span><button class="border px-3 p-1 add-experience fa fa-plus" type="button" onclick="openKakaoTalkChat()">1:1 문의하기 </button></div><br>
 
                 <p>안녕하세요 <sec:authentication property="principal.name"/>고객님 방문해 주셔서 감사합니다. <br>귀하의 문의에 신속하게 답변드리겠습니다.</p>
-                <p>1:1 문의는 평일 오후 5시까지 (주말, 공휴일은 휴무) <br>접수된 문의만 당일 답변드리고 있습니다. 근무시간 외에 질문을 주신 경우 다음 영업일 근무시간에 순차적으로 답변해드립니다.</p>
+                <p>1:1 문의는 평일 오후 5시까지 <br>(주말, 공휴일은 휴무) <br>접수된 문의만 당일 답변드리고 있습니다. 근무시간 외에 질문을 주신 경우 다음 영업일 근무시간에 순차적으로 답변해드립니다.</p>
 
             </div>
         </div>
