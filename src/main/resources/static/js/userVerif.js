@@ -3,10 +3,8 @@ const pwResult = document.getElementById("pwResult");
 const btn = document.getElementById("btn");
 const pwCheck = document.getElementById("pwCheck");
 const pwCheckResult = document.getElementById("pwCheckResult");
-const oldPw = document.getElementById("oldPw")
-const oldPwCheck = document.getElementById("oldPwCheck")
-const oldPwCheckResult = document.getElementById("oldPwCheckResult")
-let checks = [false,false];
+
+let checks = [false,false,false];
 
 //PW 검증
 pw.addEventListener("keyup", function(){
@@ -45,16 +43,7 @@ pwCheck.addEventListener("keyup", function(){
     }
 });
 
-// oldPw.addEventListener("blur", function (){
-//    if(oldPw.value == oldPwCheck.value) {
-//        oldPwCheckResult.innerHTML="동일한 PW"
-//        checks[3]=true;
-//    } else{
-//        oldPwCheckResult.innerHTML="PW가 틀립니다"
-//        checks[3]=false;
-//    }
-//
-// });
+
 
 
 btn.addEventListener("click", function(){
