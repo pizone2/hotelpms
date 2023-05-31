@@ -26,6 +26,20 @@
             border-radius: 4px;
         }
 
+        .detailButton {
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            border: 1px solid #dfa974;
+            border-radius: 2px;
+            color: #dfa974;
+            font-weight: 500;
+            background: transparent;
+            width: 100%;
+            height: 46px;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 
@@ -87,7 +101,8 @@
 <%--                                         <h6 class="mb-0">EMAIL</h6>--%>
 <%--                                         <span class="text-secondary"><sec:authentication property="principal.email" /></span>--%>
 <%--                                     </li>--%>
-                                     <button class="btn btn-primary" style="margin-right: 10px;">나의 예약내역 보기</button>
+                                     <%--<button class="btn btn-primary" style="margin-right: 10px;">나의 예약내역 보기</button>--%>
+                                     <a href="/pay/paymentDetail"><button class="detailButton" >나의 예약내역 보기</button></a>
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                      </li>
                                  </ul>
