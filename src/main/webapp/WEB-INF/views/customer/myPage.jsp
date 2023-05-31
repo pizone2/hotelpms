@@ -42,15 +42,15 @@
                         <div class="loginbox-or">
                             <div class="or-line"></div>
                         </div>
-                        <form id="checkPw" method="post" action="checkPw">
-                            <input type="text" class="form-control" placeholder="현재 비밀번호 입력" name="password" id="oldPwCheck">
+<%--                        <form id="checkPw" method="post" action="checkPw">--%>
+<%--                            <input type="text" class="form-control" placeholder="현재 비밀번호 입력" name="password" id="oldPwCheck">--%>
 
 
-                            <div class="loginbox-submit">
-                                <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
-                                <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">
-                            </div>
-                        </form>
+<%--                            <div class="loginbox-submit">--%>
+<%--                                <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">--%>
+<%--                                <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">--%>
+<%--                            </div>--%>
+<%--                        </form>--%>
 
                         <form id="updatePw" method="post" action="updatePw">
                             <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">
