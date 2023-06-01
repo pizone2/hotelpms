@@ -31,9 +31,46 @@
     ></script>
 
 
-    //구글 폰트 적용하기
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&family=Noto+Sans+KR&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+        table {
+            font-family: 'Noto Sans KR', sans-serif;
+
+        }
+
+        .regular {
+            font-weight: 400;
+        }
+
+        .medium {
+            font-weight: 500;
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+        .my-5 {
+            margin: 40px; /* 원하는 마진값으로 수정하세요 */
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .aa {
+            width: 70%;
+            text-align: center;
+
+            margin: 0 auto; /* 수평 중앙 정렬을 위해 margin 값을 0 auto로 설정합니다 */
+
+        }
+        .the {
+            background-color:#ffc760;
+            color: #fff;
+        }
+
+
+
     </style>
 
 
@@ -64,7 +101,7 @@
 <!-- Breadcrumb Section End -->
 <div class="position-relative overflow-hidden  text-center bg-light">
     <div class="col-md-12 p-lg-10 mx-auto my-10">
-        <div class="">
+        <div class="regular">
 
             <div class="container text-left">
                 <div class="row justify-content-center">
@@ -97,11 +134,11 @@
         <div class="product-device product-device-2 shadow-sm d-none d-md-block">
         </div>
         <!-- 객실 타입 페이지 -->
-        <div class="my-5">
+        <div class="my-5 aa">
         <table class="table table-hover bg-white text-center">
-            <thead>
+            <thead class="the">
             <tr>
-                <th>객실 이미지</th><th>객실명</th><th>상태</th><th>기준 / 최대 </th><th>기간</th><th>이용금액</th><th>구매여부</th>
+                <th>객실 이미지</th><th>객실명</th><th>상태</th><th>기준 / 최대</th><th>기간</th><th>이용금액</th><th>구매여부</th>
             </tr>
             </thead>
 
@@ -123,12 +160,12 @@
                     <c:if test="${vo.roomType eq '스탠다드'}">
                         <td><img alt="스탠다드" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDFfMjU2%2FMDAxNjI3ODI0OTgzODUx.5Uxcbh7riac8DDnRcUyDGgiWjSpOXyN8ea7s2CtBg6kg.bxdekaTjaIL8WiXLoVzba6WS3fj0rEAKem1YewlSgucg.JPEG.yuga14%2FIMG_1629.jpg&type=sc960_832" class="img-thumbnail"></td>
                     </c:if>
-                    <td id="rtype" style="vertical-align: middle; text-align: center; font-size: 25px;">${vo.roomType}</td>
+                    <td id="rtype" style="vertical-align: middle; text-align: center; font-size: 17px;">${vo.roomType}</td>
 
                     <c:forEach items="${room}" var="ro">
                         <c:choose>
                             <c:when test="${vo.roomType eq ro.roomType}">
-                                <td style="vertical-align: middle; text-align: center;"><div class="bookable font-weight-bold text-warning fw-bold font-monospace" >예약 가능</div></td>
+                                <td style="vertical-align: middle; text-align: center; font-size: 17px;"><div class="bookable font-weight-bold text-warning  font-monospace" >예약 가능</div></td>
                             </c:when>
                             <c:otherwise>
                             </c:otherwise>
@@ -142,10 +179,10 @@
                         </c:if>
                     </c:forEach>
                     <c:if test="${count == 0}">
-                        <td style="vertical-align: middle; text-align: center;"><div class="bookable font-weight-bold text-danger fw-bold font-monospace">예약불가</div></td>
+                        <td style="vertical-align: middle; text-align: center; font-size: 17px;"><div class="bookable font-weight-bold text-danger  font-monospace">예약불가</div></td>
                     </c:if>
                         <%--예약 가능한 내역이 0개라면 예약 불가 처리 끝 --%>
-                    <td style="vertical-align: middle; text-align: center;">
+                    <td style="vertical-align: middle; text-align: center; font-size: 17px;">
                         <div style="display: inline-block;">
                             <select id="guest">
                                 <option value="1" ${vo.capacity >= 1 ? '' : 'disabled'}> 1인 (최대 ${vo.capacity}인) </option>
@@ -155,9 +192,9 @@
                             </select>
                         </div>
                     </td>
-                    <td style="vertical-align: middle; text-align: center;">
+                    <td style="vertical-align: middle; text-align: center; font-size: 17px;">
                         <div style="display: inline-block;">
-                            <select name="stayDuration" id="stayDuration" style="display: block; margin: 0 auto;">
+                            <select name="stayDuration" id="stayDuration" style="display: block; margin: 0 auto; font-size: 25px;">
                                 <option value="1">1박 2일</option>
                                 <option value="2">2박 3일</option>
                                 <option value="3">3박 4일</option>
@@ -167,10 +204,11 @@
                             </select>
                         </div>
                     </td>
-                    <td style="vertical-align: middle; text-align: center;">
+                    <td style="vertical-align: middle; text-align: center; font-size: 17px;" class="bookable font-weight-bold text-warning  font-monospace">
                         <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
                         </div>
+
                     </td>
                     <c:set var="count" value="0" />
                     <c:forEach items="${room}" var="ro">
@@ -180,13 +218,13 @@
                     </c:forEach>
 
                     <c:if test="${count > 0}">
-                        <td style="vertical-align: middle; text-align: center;">
-                            <button type="button" class="btn1 btn-outline-warning rounded-pill btn-lg" style="background-color: white;">선택</button>
+                        <td style="vertical-align: middle; text-align: center; font-size: 17px;">
+                            <button type="button" class="btn1 btn-outline-warning rounded-pill " style="background-color: white;">선택</button>
                         </td>
                     </c:if>
 
                     <c:if test="${count == 0}">
-                        <td><div class="bookable font-weight-bold text-danger">예약 마감</div></td>
+                        <td style="vertical-align: middle; text-align: center; font-size: 17px;"><div class="bookable font-weight-bold text-danger  font-monospace"><div class="bookable font-weight-bold text-danger" >예약 마감</div></td>
                     </c:if>
                 </tr>
             </c:forEach>
