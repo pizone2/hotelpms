@@ -60,7 +60,7 @@
                                 <li class="active"><a href="/">Home</a></li>
                                 <li><a href="/booking/reservation">Rooms</a></li>
                                 <sec:authorize access="isAuthenticated()">
-                                    <li><a href="/pay/paymentDetail">Reservation</a></li>
+                                    <li><a href="/pay/paymentList">Reservation</a></li>
                                     <li><a href="/customer/myPage">MyPage</a></li>
                                     <li><a href="/customer/logout">Logout</a></li>
                                 </sec:authorize>

@@ -2,15 +2,35 @@ package com.dev.hotelpms.pay;
 
 
 import com.dev.hotelpms.user.UserVO;
+import com.siot.IamportRestClient.request.CancelData;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
+
+import lombok.Data;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+
+
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.net.URL;
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 
 @Slf4j
@@ -26,12 +46,21 @@ public class PayService {
     public PayVO getPayDetail(PayVO payVO)throws Exception{
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String name1 = authentication.getName();
+        String name = authentication.getName();
 
-
-        payVO.setId(name1);
+        payVO.setId(name);
 
         return payDAO.getPayDetail(payVO);
+    }
+
+    public List<PayVO> getPayList(PayVO payVO)throws Exception{
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+
+        payVO.setId(name);
+
+        return payDAO.getPayList(payVO);
     }
 
     public int setPayAdd(PayVO payVO)throws Exception{
@@ -61,9 +90,14 @@ public class PayService {
             throw new IllegalStateException("Unsupported authentication principal type: " + principal.getClass());
         }
 
-
-
         payDAO.setPayAdd(payVO);
         return  payDAO.setResstatus(payVO);
     }
+
+    public int setPayDelete (PayVO payVO)throws Exception{
+        System.out.println(payVO.getReservationNumber());
+        return payDAO.setPayDelete(payVO);
+    }
+
+
 }
