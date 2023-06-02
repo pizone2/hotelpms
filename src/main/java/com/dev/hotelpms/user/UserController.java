@@ -6,7 +6,10 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.mail.MessagingException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -89,11 +94,27 @@ public class UserController {
     }
 
     @PostMapping("userUpdate")
-    public ModelAndView updateUser(@ModelAttribute("userVO")UserVO userVO) throws Exception {
+    public ModelAndView updateUser(@ModelAttribute("userVO")UserVO userVO, HttpServletResponse response) throws Exception {
         ModelAndView mv = new ModelAndView();
         int result = userService.updateUser(userVO);
         log.error(userVO.getPhoneNumber());
+
         mv.setViewName("redirect:/customer/myPage");
+
+        //자동 로그인 처리
+        String username = userVO.getUsername();
+        String password = userVO.getPassword();
+
+        //사용자 인증 객체 생성
+        Authentication authentication = new UsernamePasswordAuthenticationToken(username,password);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        //쿠키 생성 및 저장
+        Cookie cookie = new Cookie("autologin" , username + ":" + password);
+        cookie.setMaxAge(30 * 24 * 60 * 60); // 쿠키 유효기간 설정 (30일)
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
         return mv;
     }
 
