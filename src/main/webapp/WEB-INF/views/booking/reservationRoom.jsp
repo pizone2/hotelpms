@@ -170,6 +170,7 @@
                     <td style="vertical-align: middle; text-align: center;">
                         <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
+<%--                            호텔 가격--%>
                         </div>
                     </td>
                     <c:set var="count" value="0" />
