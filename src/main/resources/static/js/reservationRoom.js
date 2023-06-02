@@ -9,20 +9,22 @@ const rtype = document.getElementById("rtype").textContent;
 //파라미터 값으로 넘긴 checkinDate 넣어주기
 const urlParams = new URLSearchParams(window.location.search);
 const checkinDate = urlParams.get('checkinDate');
-//오늘 달력 날짜를 구하는 함수
-let todaydate = new Date();
-let todaydatey = todaydate.getFullYear();
-let todaydatem = todaydate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해주기
-let todaydated = todaydate.getDate();
-//////////////////////////////////
-let today = new Date(checkinDate);
-let day = String(today.getDate()).padStart(2, '0');
 document.getElementById("myDiv").style.display = "none";
-document.getElementById('result').style.display = 'none';
 
 
 
-
+// $.ajax({
+//     url: "/booking/reservationRoom",
+//     type: "POST",
+//     data: {
+//
+//     },
+//     success: function(data) {
+//
+//     },
+//     error: function(xhr, status, error) {
+//
+//     })
 
 
 
@@ -49,14 +51,13 @@ $(".btn1").on("click", function() {
     const month = String(futureDate.getMonth() + 1).padStart(2, '0');
     const day = String(futureDate.getDate()).padStart(2, '0');
 
-
-
 // 결과 출력
     const formattedDate = `${year}-${month}-${day}`;
 
     console.log("ddd일 후 날짜:", formattedDate);
     console.log("Check-in 날짜:", checkinDate);
     console.log("숙박 기간dd (일):", stayDuration);
+
 
     // 추출한 값을 활용하여 원하는 작업 수행
     // 예: 정보를 출력하거나 다른 요소에 설정하는 등
@@ -69,10 +70,25 @@ $(".btn1").on("click", function() {
     console.log("숙박 기간:", stayDuration);
     console.log("객실 가격:", roomPrice);
 
+    //할인율
+    let discountRateElement = document.getElementById('discountRate');
+    let discountRate = parseInt(discountRateElement.value);
+    let calculatedF;
+    if (discountRate !== 0) {
+        calculatedF = f / discountRate;
+    } else {
+        // discountRate가 0인 경우에 대한 처리를 수행합니다.
+        // 예를 들어, 0으로 나누는 경우에는 0이나 다른 값을 할당할 수 있습니다.
+        calculatedF = 0;
+    }
+
+
+
     // //총합계금액 삽입해주기
     $("#paymentAmount").val(f);
     $("#paymentAmount1").text(f+'원');
-    $("#paymentAmount2").text(f+'원');
+    $("#discount").text('-'+calculatedF+'원');
+    $("#paymentAmount2").text(f-calculatedF+'원');
     // //객실타입
     $("#roomType").val(rtype);
     // //체크인 날짜
@@ -85,44 +101,19 @@ $(".btn1").on("click", function() {
 
 
 
-});
-$(document).on('dblclick', '.rd-day-body.rd-day-selected', function() {
-    let monthNumber = null;
-    let year = null;
-    $('.rd-month-label').each(function() {
-        const value = $(this).text(); // get the element's value
-        const parts = value.split(" ");
-        const month = parts[0];
-        year = parts[1];
+    // //인원수
+    // let a = $("#guest").val();
+    // //객실형식
+    // let b = $("#rtype").val();
+    // //몇박묶을건지 박수
+    // let c =  $("#stayDuration").val();
+    // let d = checkinDate
+    // let e = checkinDate + c
+    // //총객실금액합계
+    // let f = $("#roomPrice");
+    // let tp = c*f ;
+    //
+    //
 
 
-        //출력된 month의 값을 두자리수로 변환해주기
-        monthNumber = (new Date(`${month} 1, 2000`).getMonth() + 1).toString().padStart(2, '0');
-    });
-
-
-    const numericValue = parseInt($(this).text());
-    const formattedValue = numericValue.toString().padStart(2, '0');
-    const formattedDate = `${year}-${monthNumber}-${formattedValue}`;
-    const  compareDate =`${todaydatey}-${todaydatem}-${todaydated}`;
-
-    let url = 'http://localhost/booking/reservationRoom?checkinDate=' + formattedDate;
-
-    if (new Date(formattedDate) >= new Date(compareDate)) {
-        // formattedDate가 compareDate보다 이후일 때 실행되는 코드
-        window.location.href = url;
-
-    }
-
-
-
-
-});
-$(function() {
-    $('.rd-day-body').each(function() {
-        const value = $(this).text(); // 요소의 값을 가져옵니다
-        if (value === day) { // 값이 20인 경우
-            $(this).removeClass().addClass('rd-day-body-a'); // 새로운 값을 설정합니다
-        }
-    });
 });
