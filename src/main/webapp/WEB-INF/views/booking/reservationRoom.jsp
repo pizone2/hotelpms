@@ -162,6 +162,7 @@
     </div>
 
 
+
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -182,17 +183,17 @@
 
                             <div style="display: block; width: 100%; text-align: left;">
                                 <input class="form-check-input" type="checkbox" value="" id="check1">
-                                제 1조 (목 적) 개인정보 제 3자 동의
+                                MO HOTEL 서비스 이용약관 동의
                             </div>
                             <h6>&nbsp;</h6>
                             <div style="display: block; width: 100%; text-align: left;">
                                 <input class="form-check-input" type="checkbox" value="" id="check2">
-                                제 2 조 (용어의 정의) 개인정보취급 동의
+                                개인정보취급 및 수집 이용약관 동의
                             </div>
                             <h6>&nbsp;</h6>
                             <div style="display: block; width: 100%; text-align: left;">
                                 <input class="form-check-input" type="checkbox" value="" id="check3">
-                                제 3 조 (용어의 정의) 개인정보취급 동의
+                                개인정 제공 항목 및 고객사 서비스약관 동의
                             </div>
 
                         </div>
@@ -201,7 +202,7 @@
                 </div>
 
             </div>
-
+            <input type="hidden" id="discountRate" value="<c:out value="${discountRate}" />">
             <div class="col-lg-6" style=" text-align: left;">
                 <h3 style=" text-align: left;">예약 결제금액</h3>
                 <br>
@@ -212,7 +213,7 @@
                     </tr>
                     <tr>
                         <th>할인요금</th>
-                        <td>- 0원</td>
+                        <td id="discount">원</td>
                     </tr>
                     <tr>
                         <th>총 결제금액</th>
@@ -222,14 +223,25 @@
                 </table>
 
                 <div style="display: flex; justify-content: center;">
+
+                    <%@ page import="org.springframework.security.core.Authentication" %>
+                    <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+
+                    <%
+                        // Check if the user is logged in
+                        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                        boolean loggedIn = authentication != null && authentication.isAuthenticated() && !authentication.getPrincipal().equals("anonymousUser");
+                    %>
+                    <input type="hidden" id="loggedInValue" value="<%= loggedIn %>">
+
                     <button id="requestPay" class="btn btn-primary" style="margin-right: 10px;">결제하기</button>
+
                     <button class="btn btn-secondary" style="margin-left: 10px;">취소</button>
                 </div>
                 <h3>&nbsp;</h3><h3>&nbsp;</h3>
             </div>
         </div>
     </div>
-
 
 
 

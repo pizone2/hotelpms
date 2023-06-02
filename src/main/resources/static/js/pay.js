@@ -137,8 +137,8 @@ function cancelPayments(){
         },
         success: function(result){
             alert("결제금액 환불완료");
-            //self.close();//팝업창닫기
-            //결제 취소화면으로 이동해주기.
+            location.reload();
+
         },
         error: function(result){
             alert("결제금액 환불못함. 이유: "+result.responseText);
