@@ -10,6 +10,6 @@ public interface BookingDAO {
     public List<ReservedVO> getPossibleReserve() throws Exception;
     public List<RoomTypeVO> getRoomTypeList(RoomTypeVO roomTypeVO)throws Exception;
     public List<BookingVO> getReserved(BookingVO bookingVO)throws Exception;
-
+    public int getBookingCheck(BookingVO bookingVO)throws Exception;
 
 }
