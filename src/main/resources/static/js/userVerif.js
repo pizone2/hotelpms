@@ -8,10 +8,10 @@ const phoneCheckResult = document.getElementById("phoneCheckResult");
 const phone = document.getElementById("phone");
 
 let checks = [false,false,false];
-let checks2 = [false];
+let checks2 = [true];
 
 //전화번호 검증
-phone.addEventListener("keyup", function (){
+phone.addEventListener("change", function (){
    if(phone.value.length==11) {
        phoneCheckResult.innerHTML = '유효한 전화번호'
        checks2[0] = true;
@@ -45,12 +45,6 @@ pw.addEventListener("keyup", function(){
     }
 })
 
-// pw.addEventListener("change", function(){
-//     checks[3]=false;
-//     pwCheck.value='';
-//     pwCheckResult.innerHTML='PW가 틀립니다';
-// })
-
 //pw Equal 검증
 pwCheck.addEventListener("keyup", function(){
     if(pwCheck.value == pw.value){
@@ -61,8 +55,6 @@ pwCheck.addEventListener("keyup", function(){
         checks[2]=false;
     }
 });
-
-
 
 
 btn.addEventListener("click", function(){

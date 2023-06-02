@@ -42,24 +42,14 @@
                         <div class="loginbox-or">
                             <div class="or-line"></div>
                         </div>
-<%--                        <form id="checkPw" method="post" action="checkPw">--%>
-<%--                            <input type="text" class="form-control" placeholder="현재 비밀번호 입력" name="password" id="oldPwCheck">--%>
-
-
-<%--                            <div class="loginbox-submit">--%>
-<%--                                <input type="hidden" class="form-control" placeholder="enter address line 1" name="id " value="<sec:authentication property="principal.id"/>">--%>
-<%--                                <input type="submit" class="btn btn-primary btn-block" id="btn2" value="checkPw">--%>
-<%--                            </div>--%>
-<%--                        </form>--%>
 
                         <form id="updatePw" method="post" action="updatePw">
-                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id" value="<sec:authentication property="principal.id"/>">
-<%--                            <div class="loginbox-textbox">--%>
-<%--                                <input type="text" class="form-control" id="oldPw" placeholder="현재 비밀번호">--%>
-<%--                                <span id="oldPwCheckResult"></span>--%>
-<%--                            </div>--%>
+                            <input type="hidden" class="form-control" placeholder="enter address line 1" name="id"
+                                   value="<sec:authentication property="principal.id"/>">
+
                             <div class="loginbox-textbox">
-                                <input type="password" class="form-control" id="pw" name="password" placeholder="새 비밀번호">
+                                <input type="password" class="form-control" id="pw" name="password"
+                                       placeholder="새 비밀번호">
                                 <span id="pwResult" style="color: red;"></span>
                             </div>
                             <div class="loginbox-textbox">
@@ -133,7 +123,7 @@
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Email</label>
-                        <input type="email" class="form-control" placeholder="enter address line 2" name="email" value="<sec:authentication property="principal.email" />">
+                        <input type="email" class="form-control" placeholder="enter address line 2" name="email" required value="<sec:authentication property="principal.email" />">
                     </div>
                 </div>
                 <div class="mt-5 text-center">
