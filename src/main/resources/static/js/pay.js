@@ -45,10 +45,10 @@ document.getElementById("requestPay").addEventListener("click", function() {
 
     if (loggedIn) {
         // 사용자가 로그인되어 있는 경우, requestPay() 함수 실행
-        var roomType = document.getElementById('roomType').value;
-        var guestCount = document.getElementById('guestCount').value;
-        var checkinDate = document.getElementById('checkinDate').value;
-        var checkoutDate = document.getElementById('checkoutDate').value;
+        let roomType = document.getElementById('roomType').value;
+        let guestCount = document.getElementById('guestCount').value;
+        let checkinDate = document.getElementById('checkinDate').value;
+        let checkoutDate = document.getElementById('checkoutDate').value;
         // var paymentAmount = parseInt( document.getElementById('paymentAmount2').textContent) ;
 
 
@@ -123,27 +123,26 @@ document.getElementById("requestPay").addEventListener("click", function() {
 
 });
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@(  환불하기  )@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-function cancelPay() {
-    console.log("cancelPay");
-    jQuery.ajax({
-        // 예: http://www.myservice.com/payments/cancel
-        "url": "http://www.myservice.com/payments/cancel",
-        "type": "POST",
-        "contentType": "application/json",
-        "data": JSON.stringify({
-            "merchant_uid": 1685458412048, // 예: ORD20180131-0000011
-            "cancel_request_amount": 10, // 환불금액
-            "reason": "테스트 결제 환불", // 환불사유
-            "refund_holder": "홍길동", // [가상계좌 환불시 필수입력] 환불 수령계좌 예금주
-            "refund_bank": "88", // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(예: KG이니시스의 경우 신한은행은 88번)
-            "refund_account": "56211105948400" // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
-        }),
-        "dataType": "json"
-    }).done(function(result) { // 환불 성공시 로직
-        alert("환불 성공");
-    }).fail(function(error) { // 환불 실패시 로직
-        alert("환불 실패");
+
+/*******************************
+ 결제 취소
+ ********************************/
+function cancelPayments(){
+    let reservationNumber = document.getElementById('reservationNumber').value;
+    $.ajax({
+        type:"POST",
+        url:"/pay/cancelPayments",
+        data: {
+            'reservationNumber':reservationNumber
+        },
+        success: function(result){
+            alert("결제금액 환불완료");
+            //self.close();//팝업창닫기
+            //결제 취소화면으로 이동해주기.
+        },
+        error: function(result){
+            alert("결제금액 환불못함. 이유: "+result.responseText);
+        }
     });
 }
 

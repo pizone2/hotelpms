@@ -103,8 +103,9 @@
         </table>
         <br>
         <br>
+        <input type="hidden" id="reservationNumber" value="${payVO.reservationNumber}">
 
-        <button onclick="cancelPay()">환불하기</button>
+        <button class="btn btn-secondary" style="float: right" onclick="cancelPayments()">환불하기</button>
 
 
 

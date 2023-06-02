@@ -8,9 +8,15 @@
         SELECT * FROM BOOKING WHERE ID = #{id} ORDER BY RESERVATIONNUMBER  DESC LIMIT 1;
     </select>
 
-    <!--    <insert id="setPayAdd" parameterType="PayVO">-->
-    <!--        INSERT INTO BOOKING VALUES(NULL,#{roomNumber},#{id},#{roomType},#{name},#{reservationEmail},#{guestCount},DATE_FORMAT(SYSDATE(), '%Y-%m-%d %H:%i:%s'),#{checkinDate},#{checkoutDate},'결제완료',#{paymentAmount},#{phoneNumber})-->
-    <!--    </insert>-->
+    <select id="getPayList" parameterType="PayVO" resultType="PayVO">
+        SELECT * FROM BOOKING WHERE ID = #{id} ORDER BY RESERVATIONNUMBER  DESC;
+    </select>
+
+    <delete id="setPayDelete" parameterType="PayVO">
+        DELETE FROM BOOKING WHERE RESERVATIONNUMBER = #{reservationNumber};
+    </delete>
+
+
 
     <insert id="setPayAdd" parameterType="PayVO">
         INSERT INTO BOOKING
