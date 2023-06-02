@@ -155,7 +155,7 @@
                         <td><img alt="스위트" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMjdfMjMz%2FMDAxNjE0NDE4MzkyNDUy.KEDQSPx8pTmYWwv6zlMfUAcASmIplyh4Jaxx_mX-sisg.Bb8qtjlv9U8njULHQzAXTUF2q5srsPGAXD96cZzlVGkg.JPEG.hyiey2%2FIMG_8726.jpg&type=sc960_832" class="img-thumbnail"></td>
                     </c:if>
                     <c:if test="${vo.roomType eq '트윈'}">
-                        <td><img alt="트윈룸" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMTFfMzUg%2FMDAxNjczNDAwMTgzOTEz.HVCC4PmbefhAzFbYYITaPQymuKG9dYobwKB3qCOHylwg.aEO5mDT7RHh3TQHmgXfiq-nJwjzjMfcgqqbZVemGet4g.JPEG.bellesongs%2F%25C6%25AE%25C0%25A92.jpg&type=sc960_832" class="img-thumbnail"></td>
+                        <td><img alt="트윈룸" height="200" width="200"   src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMTFfMzUg%2FMDAxNjczNDAwMTgzOTEz.HVCC4PmbefhAzFbYYITaPQymuKG9dYobwKB3qCOHylwg.aEO5mDT7RHh3TQHmgXfiq-nJwjzjMfcgqqbZVemGet4g.JPEG.bellesongs%2F%25C6%25AE%25C0%25A92.jpg&type=sc960_832" class="img-thumbnail"></td>
                     </c:if>
                     <c:if test="${vo.roomType eq '스탠다드'}">
                         <td><img alt="스탠다드" height="200" width="200"  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MDFfMjU2%2FMDAxNjI3ODI0OTgzODUx.5Uxcbh7riac8DDnRcUyDGgiWjSpOXyN8ea7s2CtBg6kg.bxdekaTjaIL8WiXLoVzba6WS3fj0rEAKem1YewlSgucg.JPEG.yuga14%2FIMG_1629.jpg&type=sc960_832" class="img-thumbnail"></td>
