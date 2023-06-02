@@ -6,15 +6,18 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -85,6 +88,15 @@ public class UserController {
         return mv;
     }
 
+    @PostMapping("userUpdate")
+    public ModelAndView updateUser(@ModelAttribute("userVO")UserVO userVO) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        int result = userService.updateUser(userVO);
+        log.error(userVO.getPhoneNumber());
+        mv.setViewName("redirect:/customer/myPage");
+        return mv;
+    }
+
     @GetMapping("findIdPw")
     public ModelAndView findIdPw(UserVO userVO) throws Exception {
         ModelAndView mv = new ModelAndView();
@@ -123,6 +135,25 @@ public class UserController {
         int result = userService.saveTempPw(userVO);
         return tempPw;
     }
+    @PostMapping("updatePw")
+    public ModelAndView updatePw(UserVO userVO) throws Exception {
+        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/customer/myPage");
+        log.error(userVO.getPassword());
+        int result = userService.saveTempPw(userVO);
+        return mv;
+    }
+
+//    @PostMapping("checkPw")
+//    public String checkPw(String id)throws Exception {
+//        String userId = id;
+//        UserVO userVO = userService.checkPw(userId);
+//
+//
+//        return mv;
+//    }
+
 
 
 

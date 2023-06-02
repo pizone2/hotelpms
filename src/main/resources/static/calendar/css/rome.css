@@ -4,6 +4,16 @@
  * @link https://github.com/bevacqua/rome
  * @license MIT
  */
+
+/*오늘 날짜가 선택됐었을때 색상을 바꾸는 기능 */
+.rd-day-body-a {
+  cursor: pointer;
+  background-color: #28cd91;
+  color: #fff;
+  border-radius: 100%;
+  opacity: 0.8; /* 투명도 */
+}
+
 .rd-container {
   display: none;
   /*border: 1px solid #333;*/
@@ -64,10 +74,11 @@
 .rd-time-selected,
 .rd-time-option:hover {
   cursor: pointer;
-  background-color: #f67280;
+  background-color: #ffb300;
   color: #fff;
   /* new */
-  border-radius: 50%;
+  border-radius: 30%;
+  opacity: 0.4; /* 투명도 */
 }
 .rd-day-prev-month,
 .rd-day-next-month {
