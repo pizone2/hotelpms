@@ -22,6 +22,10 @@
             min-height: 1.5rem;
             padding-top: 1.5rem;
         }
+
+        .container {
+            max-width: 1157px;
+        }
     </style>
 </head>
 

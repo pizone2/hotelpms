@@ -29,4 +29,7 @@ public interface UserDAO {
 
     //이메일 중복체크
     public UserVO emailDuplicateCheck(UserVO userVO) throws Exception;
+
+    //핸드폰번호 중복체크
+    public UserVO phoneDuplicateCheck(UserVO userVO) throws Exception;
 }
