@@ -40,7 +40,7 @@
 </div>
 <%--<section class="contact-section spad">--%>
 <div class="container">
-    <div class="row">
+    <div class="row mb-5">
         <%--            <div class="col-lg-4">--%>
         <%--                <div class="contact-text">--%>
         <%--                    <h2>IdPw찾기</h2>--%>
@@ -50,7 +50,7 @@
         <%--            </div>--%>
 
         <div class="container padding-bottom-3x mb-2">
-            <div class="row justify-content-center contact-text">
+            <div class="row justify-content-left contact-text">
                 <div class="col-lg-8 col-md-10">
                     <div class="forgot">
 
@@ -65,8 +65,8 @@
 
                     </div>
 
-                    <div class="card mt-4">
-                        <div class="card-body">
+                    <div class="mt-4">
+                        <div class="">
                             <div class="form-group">
                                 <label for="email">Enter your Email</label>
                                 <input id="email" type="email" name="email" class="email form-control" placeholder="이메일 입력">
@@ -74,16 +74,16 @@
                                 registration on BBBootstrap.com. Then we'll email a link to this address.</small>
                             </div>
                         </div>
-                        <div class="card-footer contact-form">
+                        <div class="contact-form">
                             <button class="find_btn">찾기</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container padding-bottom-3x mb-2 mt-5">
-            <div class="row justify-content-center contact-text  mt-5">
-                <div class="col-lg-8 col-md-10">
+        <div class="container padding-bottom-3x mb-5 mt-5">
+            <div class="row justify-content-left contact-text  mt-5">
+                <div class="col-lg-8 col-md-10 mb-5">
                     <div class="forgot">
 
                         <h3>Password 찾기</h3>
@@ -97,8 +97,8 @@
 
                     </div>
 
-                    <div class="card mt-4">
-                        <div class="card-body">
+                    <div class="mt-4">
+                        <div class="">
                             <div class="form-group">
                                 <label for="id">Enter your Email</label>
                                 <input type="text" id="id" name="id" class="id form-control" placeholder="아이디 입력">
@@ -106,7 +106,7 @@
                                 registration on BBBootstrap.com. Then we'll email a link to this address.</small>
                             </div>
                         </div>
-                        <div class="card-footer contact-form">
+                        <div class="contact-form">
                             <button class="find_btnPw">찾기</button>
                         </div>
                     </div>

@@ -59,13 +59,13 @@
                             <ul>
                                 <li class="active"><a href="/">Home</a></li>
                                 <li><a href="/booking/reservation">Rooms</a></li>
-                                <li><a href="#">Reservation</a></li>
                                 <sec:authorize access="isAuthenticated()">
-                                <li><a href="/customer/myPage">MyPage</a></li>
-                                <li><a href="/customer/logout">Logout</a></li>
+                                    <li><a href="/pay/paymentList">Reservation</a></li>
+                                    <li><a href="/customer/myPage">MyPage</a></li>
+                                    <li><a href="/customer/logout">Logout</a></li>
                                 </sec:authorize>
                                 <sec:authorize access="!isAuthenticated()">
-                                <li><a href="/customer/login">Login</a></li>
+                                  <li><a href="/customer/login">Login</a></li>
                                 </sec:authorize>
                                 <li class="nav-item"><a class="nav-link" href="/?lang_opt=ko">KO</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/?lang_opt=en">EN</a></li>

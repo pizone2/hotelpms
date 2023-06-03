@@ -5,11 +5,17 @@ const btn1 = document.getElementById("btn1");
 const guest = document.getElementById("guest");
 const stayDuration = document.getElementById("stayDuration");
 const roomPrice = document.getElementById("roomPrice");
+const roomPrice2 = document.getElementById("roomPrice2");
 const rtype = document.getElementById("rtype").textContent;
 //파라미터 값으로 넘긴 checkinDate 넣어주기
 const urlParams = new URLSearchParams(window.location.search);
 const checkinDate = urlParams.get('checkinDate');
-//오늘 날짜 구하는 함수
+//오늘 달력 날짜를 구하는 함수
+let todaydate = new Date();
+let todaydatey = todaydate.getFullYear();
+let todaydatem = todaydate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해주기
+let todaydated = todaydate.getDate();
+//////////////////////////////////
 let today = new Date(checkinDate);
 let day = String(today.getDate()).padStart(2, '0');
 document.getElementById("myDiv").style.display = "none";
@@ -49,9 +55,7 @@ $(".btn1").on("click", function() {
 // 결과 출력
     const formattedDate = `${year}-${month}-${day}`;
 
-    console.log("ddd일 후 날짜:", formattedDate);
-    console.log("Check-in 날짜:", checkinDate);
-    console.log("숙박 기간dd (일):", stayDuration);
+
 
     // 추출한 값을 활용하여 원하는 작업 수행
     // 예: 정보를 출력하거나 다른 요소에 설정하는 등
@@ -64,10 +68,25 @@ $(".btn1").on("click", function() {
     console.log("숙박 기간:", stayDuration);
     console.log("객실 가격:", roomPrice);
 
+    //할인율
+    let discountRateElement = document.getElementById('discountRate');
+    let discountRate = parseInt(discountRateElement.value);
+    let calculatedF;
+    if (discountRate !== 0) {
+        calculatedF = f / discountRate;
+    } else {
+        // discountRate가 0인 경우에 대한 처리를 수행합니다.
+        // 예를 들어, 0으로 나누는 경우에는 0이나 다른 값을 할당할 수 있습니다.
+        calculatedF = 0;
+    }
+
+
+
     // //총합계금액 삽입해주기
     $("#paymentAmount").val(f);
     $("#paymentAmount1").text(f+'원');
-    $("#paymentAmount2").text(f+'원');
+    $("#discount").text('-'+calculatedF+'원');
+    $("#paymentAmount2").text(f-calculatedF+'원');
     // //객실타입
     $("#roomType").val(rtype);
     // //체크인 날짜
@@ -95,20 +114,37 @@ $(document).on('dblclick', '.rd-day-body.rd-day-selected', function() {
         monthNumber = (new Date(`${month} 1, 2000`).getMonth() + 1).toString().padStart(2, '0');
     });
 
+
     const numericValue = parseInt($(this).text());
     const formattedValue = numericValue.toString().padStart(2, '0');
     const formattedDate = `${year}-${monthNumber}-${formattedValue}`;
+    const  compareDate =`${todaydatey}-${todaydatem}-${todaydated}`;
 
-    var url = 'http://localhost/booking/reservationRoom?checkinDate=' + formattedDate; // Enter the URL to jump to here.
+    let url = 'http://localhost/booking/reservationRoom?checkinDate=' + formattedDate;
 
-    window.location.href = url;
+    if (new Date(formattedDate) >= new Date(compareDate)) {
+        // formattedDate가 compareDate보다 이후일 때 실행되는 코드
+        window.location.href = url;
+
+    }
+
 
 });
 $(function() {
     $('.rd-day-body').each(function() {
         const value = $(this).text(); // 요소의 값을 가져옵니다
-        if (value === day) { // 값이 20인 경우
+        if (value === day) {
             $(this).removeClass().addClass('rd-day-body-a'); // 새로운 값을 설정합니다
         }
     });
 });
+
+
+//화폐 단위를 변환해주는 기능
+window.onload = function() {
+    const price = roomPrice;
+    const formattedPrice = price.toLocaleString();
+    //const formattedPriceWithCurrency = price.toLocaleString('ko-KR', { style: 'currency', currency: 'KRW' });
+    $("#roomPrice2").val(formattedPrice);
+
+};
