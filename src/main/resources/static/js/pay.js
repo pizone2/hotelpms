@@ -40,7 +40,8 @@ var IMP = window.IMP;
 IMP.init("imp83363020");
 
 
-document.getElementById("requestPay").addEventListener("click", function() {
+//document.getElementById("requestPay").addEventListener("click", function() {
+function requestPay() {
     var loggedIn = document.getElementById("loggedInValue").value === "true";
 
     if (loggedIn) {
@@ -121,7 +122,7 @@ document.getElementById("requestPay").addEventListener("click", function() {
         window.location.href = "http://localhost/customer/login";
     }
 
-});
+};
 
 
 /*******************************
@@ -129,11 +130,15 @@ document.getElementById("requestPay").addEventListener("click", function() {
  ********************************/
 function cancelPayments(){
     let reservationNumber = document.getElementById('reservationNumber').value;
+    let checkinDate = document.getElementById('checkinDate').value;
+    let checkoutDate = document.getElementById('checkoutDate').value;
     $.ajax({
         type:"POST",
         url:"/pay/cancelPayments",
         data: {
-            'reservationNumber':reservationNumber
+            'reservationNumber':reservationNumber,
+            'checkinDate': checkinDate,
+            'checkoutDate': checkoutDate
         },
         success: function(result){
             alert("결제금액 환불완료");

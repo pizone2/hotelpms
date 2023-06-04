@@ -97,6 +97,8 @@
             </table>
             <br>
             <input type="hidden" id="reservationNumber" value="${payVO.reservationNumber}">
+                <input type="hidden" id="checkinDate" value="${payVO.checkinDate}">
+                <input type="hidden" id="checkoutDate" value="${payVO.checkoutDate}">
             <button class="btn btn-secondary" style="float: right" onclick="cancelPayments()">환불하기</button>
             <br>
             <br>
@@ -105,6 +107,16 @@
             <br>
             </div>
         </c:forEach>
+
+
+
+        <c:if test="${empty payVO}">
+            <div class="container" style="text-align: center" >
+                <h3>현재 예약중인 객실이 없습니다.</h3>
+                <br>
+                <a href="/booking/reservation">예약하러가기</a>
+            </div>
+        </c:if>
 
 
 

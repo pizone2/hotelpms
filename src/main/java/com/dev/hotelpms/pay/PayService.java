@@ -95,7 +95,15 @@ public class PayService {
     }
 
     public int setPayDelete (PayVO payVO)throws Exception{
+
         System.out.println(payVO.getReservationNumber());
+        System.out.println("@@@@@@@@@@@@@@@@@@test");
+        System.out.println(payVO.getCheckinDate());
+        System.out.println(payVO.getCheckoutDate());
+        System.out.println("delete후" + payVO.getCheckinDate());
+        System.out.println(payVO.getCheckoutDate());
+
+        payDAO.setReservationStatus(payVO);
         return payDAO.setPayDelete(payVO);
     }
 
