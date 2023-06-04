@@ -113,7 +113,7 @@
                 </div>
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
-                <div class="col-xl-5 col-lg-3 offset-xl-1 offset-lg-1" >
+               <div class="col-xl-6" >
                     <div id="calendar" class="calender-date"></div>
                 </div>
                 </sec:authorize>

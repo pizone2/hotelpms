@@ -50,4 +50,8 @@
 	<select id="emailDuplicateCheck" resultType="UserVO" parameterType="UserVO">
 		SELECT EMAIL FROM USER WHERE EMAIL=#{email}
 	</select>
+
+	<select id="phoneDuplicateCheck" resultType="UserVO" parameterType="UserVO">
+		SELECT PHONENUMBER FROM USER WHERE PHONENUMBER=#{phoneNumber}
+	</select>
 </mapper>

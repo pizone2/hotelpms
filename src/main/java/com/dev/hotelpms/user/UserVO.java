@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,6 +26,7 @@ public class UserVO implements UserDetails, OAuth2User {
     @NotBlank
     private String passwordCheck;
     @NotBlank
+    @Pattern(regexp = "^(01[01])(\\d{8})$")
     private String phoneNumber;
     @NotBlank
     private String name;

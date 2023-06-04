@@ -66,10 +66,11 @@ public class UserService implements UserDetailsService {
             bindingResult.rejectValue("email", "customer.email.duplication");
         }
 
-        // 4. 전화번호 형식 검증
-        if (!isValidPhoneNumber(userVO.getPhoneNumber())) {
+        // 4. 전화번호 중복 검사+10자리검사
+        UserVO checkPhone = userDAO.phoneDuplicateCheck(userVO);
+        if (checkPhone!=null) {
             result = true;
-            bindingResult.rejectValue("phoneNumber", "customer.phoneNumber.invalid");
+            bindingResult.rejectValue("phoneNumber", "customer.phoneNumber.duplication");
         }
 
         return result;
