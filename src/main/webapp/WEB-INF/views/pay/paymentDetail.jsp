@@ -104,6 +104,8 @@
         <br>
         <br>
         <input type="hidden" id="reservationNumber" value="${payVO.reservationNumber}">
+        <input type="hidden" id="checkinDate" value="${payVO.checkinDate}">
+        <input type="hidden" id="checkoutDate" value="${payVO.checkoutDate}">
 
         <button class="btn btn-secondary" style="float: right" onclick="cancelPayments()">환불하기</button>
 

@@ -17,4 +17,6 @@ public interface PayDAO {
     public int setResstatus(PayVO payVO)throws Exception;
 
     public int setPayDelete(PayVO payVO)throws Exception;
+
+    public int setReservationStatus(PayVO payVO)throws Exception;
 }
