@@ -37,7 +37,7 @@
 
     <update id="setResstatus" parameterType="PayVO">
         UPDATE RESERVED
-        SET ROOMRESSTATUS = '예약완료'
+        SET ROOMSTATUS = '예약완료'
         WHERE ROOMNUMBER = (
         SELECT ROOMNUMBER
         FROM BOOKING
@@ -49,7 +49,7 @@
 
     <update id="setReservationStatus" parameterType="PayVO">
         UPDATE RESERVED
-        SET ROOMRESSTATUS = '예약가능'
+        SET ROOMSTATUS = '예약가능'
         WHERE ROOMNUMBER = (
         SELECT ROOMNUMBER
         FROM BOOKING

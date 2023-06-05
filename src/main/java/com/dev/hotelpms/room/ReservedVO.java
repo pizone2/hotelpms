@@ -11,7 +11,7 @@ public class ReservedVO {
     private Date reservationDate;
     private  Long roomNumber;
     private  String roomType;
-    private  String roomResStatus;
+    private  String roomStatus;
 
 
 

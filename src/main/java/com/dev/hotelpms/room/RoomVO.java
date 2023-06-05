@@ -9,7 +9,6 @@ public class RoomVO {
     private Long roomNumber;
     private String roomType;
     private  String roomName;
-    private String roomStatus;
 
 
 

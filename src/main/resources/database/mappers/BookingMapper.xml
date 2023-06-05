@@ -9,13 +9,13 @@
          빨간색-->
         SELECT RESERVATIONDATE, COUNT(*) AS COUNT, ROOMTYPE
         FROM RESERVED
-        WHERE ROOMRESSTATUS = '예약완료'
+        WHERE ROOMSTATUS = '예약완료'
         AND ROOMTYPE = #{roomType}
         AND RESERVATIONDATE >= CURDATE()
         AND RESERVATIONDATE NOT IN (
         SELECT RESERVATIONDATE
         FROM RESERVED
-        WHERE ROOMRESSTATUS = '예약가능' AND ROOMTYPE = #{roomType}
+        WHERE ROOMSTATUS = '예약가능' AND ROOMTYPE = #{roomType}
         )
         GROUP BY RESERVATIONDATE
         ORDER BY RESERVATIONDATE;
@@ -28,7 +28,7 @@
         파란색-->
         SELECT RESERVATIONDATE, COUNT(*) AS COUNT, ROOMTYPE
         FROM RESERVED
-        WHERE ROOMRESSTATUS = '예약가능'
+        WHERE ROOMSTATUS = '예약가능'
         AND ROOMTYPE IN ('더블', '디럭스', '스위트', '스탠다드', '트윈')
         AND RESERVATIONDATE >= CURDATE()
         GROUP BY RESERVATIONDATE, ROOMTYPE
@@ -62,7 +62,7 @@
 
     <select id="getReserved"  parameterType="BookingVO"  resultType="ReservedVO">
         SELECT DISTINCT(ROOMTYPE) FROM RESERVED
-        WHERE ROOMRESSTATUS= '예약가능' AND RESERVATIONDATE = #{checkinDate}
+        WHERE ROOMSTATUS= '예약가능' AND RESERVATIONDATE = #{checkinDate}
     </select>
 
     <select id="getBookingCheck" parameterType="BookingVO" resultType="Integer">
