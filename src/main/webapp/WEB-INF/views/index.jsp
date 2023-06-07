@@ -93,8 +93,9 @@
                                      </li>
                                      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                          <h6 class="mb-0">기간</h6>
-                                         <c:set var="stayDuration" value="${(timeDiff / (1000 * 3600 * 24)) + 1}" />
-                                         <c:set var="stayDescription" value="${fn:substringBefore(stayDuration, '.')}박 ${fn:substringBefore(stayDuration + 1, '.')}일" />
+                                         <c:set var="differenceInDays" value="${((payVO.checkoutDate.time - payVO.checkinDate.time) / (1000 * 60 * 60 * 24)) + 1}" />
+                                         <c:set var="stayDescription" value="${fn:substringBefore(differenceInDays, '.')}박 ${fn:substringBefore(differenceInDays + 1, '.')}일" />
+
                                          <span class="text-secondary">${stayDescription}</span>
                                      </li>
 <%--                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--%>

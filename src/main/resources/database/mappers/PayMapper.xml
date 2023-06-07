@@ -28,7 +28,7 @@
         AND ROOMNUMBER NOT IN (
         SELECT ROOMNUMBER
         FROM BOOKING
-        WHERE CHECKOUTDATE >= #{checkoutDate} OR CHECKINDATE  <![CDATA[ <= ]]>#{checkinDate}
+        WHERE CHECKOUTDATE >= #{checkoutDate} AND CHECKINDATE  <![CDATA[ <= ]]>#{checkinDate}
         )
         ORDER BY ROOMNUMBER ASC
         LIMIT 1
