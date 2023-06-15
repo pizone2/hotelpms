@@ -77,9 +77,12 @@ public class PayController {
 
     @PostMapping("/cancelPayments")
     public ModelAndView cancelPayments(PayVO payVO) throws Exception {
+        System.out.println("ControllerTest"+payVO.getReservationNumber());
 
         String reservationNumber = payVO.getReservationNumber();
         CancelData data = new CancelData(reservationNumber, false); // merchant_uid에 값을 설정하는 경우
+
+        System.out.println(reservationNumber);
 
 //        CancelData data = payService.cancelData(payVO);//취소데이터 셋업
         IamportResponse<Payment> cancel = iamportClientApi.cancelPaymentByImpUid(data);//취소
