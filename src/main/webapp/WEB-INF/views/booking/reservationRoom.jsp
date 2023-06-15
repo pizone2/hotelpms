@@ -187,7 +187,7 @@
                     </c:if>
 
                     <c:if test="${count == 0}">
-                        <td><div class="bookable font-weight-bold text-danger">예약 마감</div></td>
+                        <td style="vertical-align: middle; text-align: center;"><div class="bookable font-weight-bold text-danger fw-bold font-monospace">예약 마감</div></td>
                     </c:if>
                 </tr>
             </c:forEach>
