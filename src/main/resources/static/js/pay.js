@@ -128,10 +128,11 @@ function requestPay() {
 /*******************************
  결제 취소
  ********************************/
-function cancelPayments(){
-    let reservationNumber = document.getElementById('reservationNumber').value;
-    let checkinDate = document.getElementById('checkinDate').value;
-    let checkoutDate = document.getElementById('checkoutDate').value;
+function cancelPayments(reservationNumber,checkinDate,checkoutDate){
+    // let reservationNumber = document.getElementById('reservationNumber').value;
+    // let checkinDate = document.getElementById('checkinDate').value;
+    // let checkoutDate = document.getElementById('checkoutDate').value;
+    alert(reservationNumber);
     $.ajax({
         type:"POST",
         url:"/pay/cancelPayments",

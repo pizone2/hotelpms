@@ -66,7 +66,7 @@
     </select>
 
     <select id="getBookingCheck" parameterType="BookingVO" resultType="Integer">
-        SELECT CASE WHEN COUNT(*) > 1 THEN 1 ELSE 0 END
+        SELECT CASE WHEN COUNT(*) >= 1 THEN 1 ELSE 0 END
         FROM BOOKING
         WHERE ID = #{id}
     </select>
