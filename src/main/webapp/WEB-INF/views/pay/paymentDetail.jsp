@@ -103,11 +103,12 @@
         </table>
         <br>
         <br>
-        <input type="hidden" id="reservationNumber" value="${payVO.reservationNumber}">
-        <input type="hidden" id="checkinDate" value="${payVO.checkinDate}">
-        <input type="hidden" id="checkoutDate" value="${payVO.checkoutDate}">
-
-        <button class="btn btn-secondary" style="float: right" onclick="cancelPayments()">환불하기</button>
+        <br>
+        <input type="hidden" id="reservationNumber_${payVO.reservationNumber}" value="${payVO.reservationNumber}">
+        <input type="hidden" id="checkinDate_${payVO.checkinDate}" value="${payVO.checkinDate}">
+        <input type="hidden" id="checkoutDate_${payVO.checkoutDate}" value="${payVO.checkoutDate}">
+        <button class="btn btn-secondary" style="float: right" onclick="cancelPayments('${payVO.reservationNumber}','${payVO.checkinDate}','${payVO.checkoutDate}')">환불</button>
+        <br>
 
 
 
