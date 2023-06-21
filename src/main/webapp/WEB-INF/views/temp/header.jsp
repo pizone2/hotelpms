@@ -49,7 +49,7 @@
                 <div class="col-lg-2">
                     <div class="logo">
                         <a href="/">
-                            <img src="/img/MOHOTELLOGO.png" alt="">
+                            <img src="/img/mohotellogo.png" alt="">
                         </a>
                     </div>
                 </div>
