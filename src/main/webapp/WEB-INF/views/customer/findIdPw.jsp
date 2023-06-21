@@ -59,7 +59,7 @@
                         <p>가입한 적이 없는 이메일 주소나 올바르지 않은 이메일 주소를 입력하신 경우에는 메일을 받을 수 없습니다!</p>
                         <ol class="list-unstyled contact-text">
                             <li><span class="text-Secondary ">1. </span>가입시 입력한 Email를 입력해주세요</li><br>
-                            <li><span class="text-Secondary">2. </span>가입하실 때 입력하신 이메일로 임시 비밀번호가 발송됩니다.</li><br>
+                            <li><span class="text-Secondary">2. </span>가입하실 때 입력하신 이메일로 아이디가 발송됩니다.</li><br>
                             <li><span class="text-Secondary">3. </span>사용한 이메일이 기억나지 않는 경우 관리자에게 문의주세요 </li>
                         </ol>
 
@@ -88,10 +88,10 @@
 
                         <h3>Password 찾기</h3>
                         <br>
-                        <p>가입한 적이 없는 이메일 주소나 올바르지 않은 이메일 주소를 입력하신 경우에는 메일을 받을 수 없습니다!</p>
+                        <p>현재 사용중인 ID 를 입력 해주세요!</p>
                         <ol class="list-unstyled contact-text">
                             <li><span class="text-Secondary ">1. </span>현재 사용중인 ID를 입력해주세요</li><br>
-                            <li><span class="text-Secondary">2. </span>가입하실 때 입력하신 Email로 Password가 발송됩니다.</li><br>
+                            <li><span class="text-Secondary">2. </span>가입하실 때 입력하신 Email로 임시 Password가 발송됩니다.</li><br>
                             <li><span class="text-Secondary">3. </span>로그인 후 MyPage 에서 비밀번호를 재설정 해주세요</li>
                         </ol>
 
@@ -100,7 +100,7 @@
                     <div class="mt-4">
                         <div class="">
                             <div class="form-group">
-                                <label for="id">Enter your Email</label>
+                                <label for="id">Enter your ID</label>
                                 <input type="text" id="id" name="id" class="id form-control" placeholder="아이디 입력">
                                 <small class="form-text text-muted">Enter the email address you used during the
                                 registration on BBBootstrap.com. Then we'll email a link to this address.</small>
