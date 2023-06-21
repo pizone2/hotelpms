@@ -51,13 +51,15 @@ public class SecurityConfig {
 				.authorizeRequests()
 				//URL과 권한매칭
 				.antMatchers("/").permitAll() //루트만 허용
-				.antMatchers("/booking/**").permitAll()
-				.antMatchers("/customer/myPage").hasRole("MEMBER")
-				.antMatchers("/pay/paymentDetail").hasRole("MEMBER")
-				.antMatchers("/pay/paymentList").hasRole("MEMBER")
-				.anyRequest().authenticated()
+//				.antMatchers("/booking/**").permitAll()
+//				.antMatchers("/customer/findIdPw").permitAll()
+//				.antMatchers("/customer/join").permitAll()
+//				.antMatchers("/customer/myPage").hasRole("MEMBER")
+//				.antMatchers("/pay/paymentDetail").hasRole("MEMBER")
+//				.antMatchers("/pay/paymentList").hasRole("MEMBER")
+//				.anyRequest().authenticated()
 //				//그외 나머지는 로그인 해야 볼수 있음 (authenticated = 인증)
-//				.anyRequest().permitAll()
+				.anyRequest().permitAll()
 //				//테스트할땐 모두 걸려버리니까 permit 마지막에 주자
 				.and()
 				.formLogin() //로그인 폼 인증 설정
