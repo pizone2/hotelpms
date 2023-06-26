@@ -119,7 +119,8 @@ function requestPay() {
     } else {
         // 사용자가 로그인되어 있지 않은 경우, 로그인 창 열기
         alert("로그인 후 사용할 수 있습니다.");
-        window.location.href = "http://localhost/customer/login";
+        // window.location.href = "http://localhost/customer/login";
+        window.location.href = "../customer/login";
     }
 
 };
@@ -132,7 +133,8 @@ function cancelPayments(reservationNumber,checkinDate,checkoutDate){
     // let reservationNumber = document.getElementById('reservationNumber').value;
     // let checkinDate = document.getElementById('checkinDate').value;
     // let checkoutDate = document.getElementById('checkoutDate').value;
-    alert(reservationNumber);
+    // alert(reservationNumber);
+    alert("정말로 환불 하시겠습니까?")
     $.ajax({
         type:"POST",
         url:"/pay/cancelPayments",
@@ -143,7 +145,7 @@ function cancelPayments(reservationNumber,checkinDate,checkoutDate){
         },
         success: function(result){
             alert("결제금액 환불완료");
-            location.reload();
+            location.href = "./paymentList";
 
         },
         error: function(result){
@@ -151,5 +153,3 @@ function cancelPayments(reservationNumber,checkinDate,checkoutDate){
         }
     });
 }
-
-

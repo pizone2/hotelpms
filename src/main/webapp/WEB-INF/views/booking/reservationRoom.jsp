@@ -237,7 +237,7 @@
                             <h6>&nbsp;</h6>
                             <div style="display: block; width: 100%; text-align: left;">
                                 <input class="form-check-input" type="checkbox" value="" id="check3">
-                                개인정 제공 항목 및 고객사 서비스약관 동의
+                                개인정보 제공 항목 및 고객사 서비스약관 동의
                             </div>
 
                         </div>
