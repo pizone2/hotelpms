@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -169,6 +170,7 @@
                     <td style="vertical-align: middle; text-align: center;">
                         <div id="roomPrice" name="roomPrice">
                                 ${vo.roomPrice}
+
 <%--                            호텔 가격--%>
                         </div>
                     </td>
@@ -253,7 +255,9 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>총계</th>
-                        <td id="paymentAmount1" style="width:200px; text-align: right">원</td>
+<%--                        <td id="paymentAmount1" style="width:200px; text-align: right">원</td>--%>
+                        <td id="paymentAmount1" style="width:200px; text-align: right"><fmt:formatNumber value="" pattern="#,###"/>원</td>
+
                     </tr>
                     <tr>
                         <th>할인요금 (첫 예약 시 10%할인)</th>

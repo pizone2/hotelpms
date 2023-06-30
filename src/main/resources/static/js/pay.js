@@ -50,8 +50,7 @@ function requestPay() {
         let guestCount = document.getElementById('guestCount').value;
         let checkinDate = document.getElementById('checkinDate').value;
         let checkoutDate = document.getElementById('checkoutDate').value;
-        // var paymentAmount = parseInt( document.getElementById('paymentAmount2').textContent) ;
-
+        let paymentAmount = parseInt(document.getElementById('paymentAmount2').textContent.replace(/,/g, ''));
 
 
         let roomNumber = 604;
@@ -60,7 +59,7 @@ function requestPay() {
         // let checkinDate = '2023-12-12';
         // let checkoutDate = '2023-12-13';
         // let guestCount = 3;
-        let paymentAmount = 10;
+        // let paymentAmount = 10;
         let name = '김진서';
         let phoneNumber = '010-3445-2132';
         let reservationEmail = 'rlawlstj0123@naver.com';

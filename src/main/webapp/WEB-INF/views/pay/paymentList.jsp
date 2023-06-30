@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -49,7 +50,8 @@
                     <td>${payVO.roomNumber}</td>
                     <td>${payVO.checkinDate}~${payVO.checkoutDate}</td>
                     <td>${payVO.guestCount}</td>
-                    <td>${payVO.paymentAmount}</td>
+                    <td><fmt:formatNumber value="${payVO.paymentAmount}" pattern="#,###"/>원</td>
+
                 </tr>
 
             </table>
@@ -61,8 +63,8 @@
             <table class="table table-bordered">
                 <tr>
                     <th>결제금액</th>
-                    <td>${payVO.paymentAmount}</td>
-                    <td>계산금액${payVO.paymentAmount}원 + 부가서비스금액 0원</td>
+                    <td><fmt:formatNumber value="${payVO.paymentAmount}" pattern="#,###"/>원</td>
+                    <td>계산금액<fmt:formatNumber value="${payVO.paymentAmount}" pattern="#,###"/>원 + 부가서비스금액 0원</td>
                 </tr>
                 <tr>
                     <th>결제방법</th>
