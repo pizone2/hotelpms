@@ -42,7 +42,7 @@ IMP.init("imp83363020");
 
 //document.getElementById("requestPay").addEventListener("click", function() {
 function requestPay() {
-    var loggedIn = document.getElementById("loggedInValue").value === "true";
+    let loggedIn = document.getElementById("loggedInValue").value === "true";
 
     if (loggedIn) {
         // 사용자가 로그인되어 있는 경우, requestPay() 함수 실행
@@ -129,10 +129,6 @@ function requestPay() {
  결제 취소
  ********************************/
 function cancelPayments(reservationNumber,checkinDate,checkoutDate){
-    // let reservationNumber = document.getElementById('reservationNumber').value;
-    // let checkinDate = document.getElementById('checkinDate').value;
-    // let checkoutDate = document.getElementById('checkoutDate').value;
-    // alert(reservationNumber);
     alert("정말로 환불 하시겠습니까?")
     $.ajax({
         type:"POST",

@@ -84,7 +84,6 @@ public class PayController {
 
         System.out.println(reservationNumber);
 
-//        CancelData data = payService.cancelData(payVO);//취소데이터 셋업
         IamportResponse<Payment> cancel = iamportClientApi.cancelPaymentByImpUid(data);//취소
 
         ModelAndView modelAndView = new ModelAndView("common/ajaxResult");
